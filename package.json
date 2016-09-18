@@ -1,0 +1,40 @@
+{
+  "name": "pencilboom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewSherstyuk/PencilBOOM.git"
+  },
+  "author": "Anton Lunenko <alunenko@n-ix.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewSherstyuk/PencilBOOM/issues"
+  },
+  "homepage": "https://github.com/AndrewSherstyuk/PencilBOOM#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "bower": "^1.7.9",
+    "cssnano": "^3.7.5",
+    "del": "^2.2.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-cli": "github:gulpjs/gulp-cli",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.1",
+    "gulp-load-plugins": "^1.3.0",
+    "gulp-stylus": "^2.5.0",
+    "gulp-uglify": "^2.0.0",
+    "jade": "^1.11.0",
+    "pug": "^2.0.0-beta6",
+    "stream-combiner2": "^1.1.1",
+    "stylus": "^0.54.5"
+  }
+}
