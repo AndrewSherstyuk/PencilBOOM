@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+<style>
+.signupform{
+  font-family: tahoma;
+
+}
+</style>
+</head>
+
+<body>
+
+
+
+<h1>Sign-up form</h1>
+
+
+
+<form method=post action=users.php>
+<table class=signupform border=1 cellspacing=0 cellpadding=0>
+  <tr>
+    <td><input name=author_name id=author_name /></td>
+    <td><label for=author_name>Name</label></td>
+  </tr>
+  <tr>
+    <td><input name=author_surname id=author_surname /></td>
+    <td><label for=author_surname>Surname</label></td>
+  </tr>
+  <tr>
+    <td><input name=date_birth id=date_birth /></td>
+    <td><label for=date_birth>date of birth</label></td>
+  </tr>
+  <tr>
+    <td><input name=email id=email /></td>
+    <td><label for=email>email</label></td>
+  </tr>
+  <tr>
+    <td><input name=login id=login /></td>
+    <td><label for=login>Login</label></td>
+  </tr>
+  <tr>
+    <td><input name=password id=password type=password /></td>
+    <td><label for=password>Password</label></td>
+  </tr>
+</table>
+<button type=reset>reset</button>
+<button type=submit>send</button>
+</form>
+
+
+
+</body>
+</html>
