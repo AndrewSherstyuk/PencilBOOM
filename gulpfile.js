@@ -4,6 +4,8 @@ var $        = require('gulp-load-plugins')()
   , sc2      = require('stream-combiner2').obj
   , resolver = require('stylus').resolver;
 
+const publicPath = "public/";
+const frontendPath = "frontend/"
 var conf = {
     "vendors": {
         "css": {
@@ -12,85 +14,100 @@ var conf = {
             ]
         },
         "js": {
-            "src": [
-            ]
+            "src": ""
         },
         "images": {
+            "src": ""
         }
     },
     "js": {
-        "src": "resources/assets/js",
-        "dest": "public/js"
+        "src": frontendPath + "js",
+        "dest": publicPath + "js"
     },
-    "styles": {
-        "src": "resources/assets/styl/grabber.styl",
-        "dest": "public/css"
+    "css": {
+        "src": frontendPath,
+        "dest": publicPath + "css"
     },
     "images": {
-        "src": ["resources/assets/images"],
-        "dest": "public/img"
+        "src": frontendPath + "images",
+        "dest": publicPath + "img"
+    },
+    "index": {
+        "src": frontendPath + "index/index.pug",
+        "dest": frontendPath
+    },
+    "html": {
+        "src": [
+            frontendPath+ "**/*.pug",
+            "!" + frontendPath + "index/*.pug",
+            "!" + frontendPath + "layout.pug"
+        ],
+        "dest": publicPath
     }
 };
 var isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
-gulp.task('vendor:css', function() {
-    return sc2(
-        gulp.src(conf.vendors.css.src),
-        $.concat('vendor.min.css'),
-        gulp.dest(conf.styles.dest)
-    );
-});
-gulp.task('vendor:js', function() {
-    return sc2(
-        gulp.src(conf.vendors.js.src),
-        $.concat('vendor.min.js'),
-        gulp.dest(conf.js.dest)
-    );
-});
-gulp.task('vendor:images', function() {
-    return sc2(
-        gulp.src(conf.vendors.images.src),
-        gulp.dest(conf.vendors.images.dest)
-    );
-});
-gulp.task('css', function() {
-    return sc2(
-        gulp.src(conf.styles.src),
-        $.stylus({
-            define: {
-                url: resolver()
-            }
-        }),
-        $.if(!isDevelopment, $.cssnano()),
-        gulp.dest(conf.styles.dest)
-    );
-});
-gulp.task('js', function() {
-    return sc2(
-        gulp.src(conf.js.src + '/**/*.*'),
-        $.babel( { presets: ['es2015'] } ),
-        $.concat('all.min.js'),
-        //$.if(isDevelopment, $.uglify()),
-        gulp.dest(conf.js.dest)
-    );
-});
-gulp.task('images', function() {
-    return sc2(
-        gulp.src(conf.images.src + '/**/*.*'),
-        gulp.dest(conf.images.dest)
-    );
-});
-gulp.task('clean', function() {
-    del(conf.styles.dest);
-    del(conf.images.dest);
+gulp.task('clean', () => del(publicPath));
+
+gulp.task('vendor:css', () => sc2(
+    gulp.src(conf.vendors.css.src),
+    $.concat('vendor.min.css'),
+    gulp.dest(conf.css.dest)
+));
+// gulp.task('vendor:js', () => sc2(
+//     gulp.src(conf.vendors.js.src),
+//     $.concat('vendor.min.js'),
+//     gulp.dest(conf.js.dest)
+// ));
+
+gulp.task('css', () => sc2(
+    gulp.src(conf.css.src + '**/*.styl'),
+    $.stylus({
+        define: {
+            url: resolver()
+        }
+    }),
+    $.if(!isDevelopment, $.cssnano()),
+    gulp.dest(conf.css.dest)
+));
+gulp.task('js', () => sc2(
+    gulp.src(conf.js.src + '**/*.js'),
+    $.babel( { presets: ['es2015'] } ),
+    $.concat('all.min.js'),
+    gulp.dest(conf.js.dest)
+));
+gulp.task('images', () => sc2(
+    gulp.src(conf.images.src + '*.{jpg,png}'),
+    gulp.dest(conf.images.dest)
+));
+gulp.task('index', () => sc2(
+    gulp.src(conf.index.src),
+    $.pug(),
+    gulp.dest(conf.html.dest)
+));
+gulp.task('html', () => sc2(
+    gulp.src(conf.html.src),
+    $.pug(),
+    gulp.dest(conf.html.dest)
+));
+
+gulp.task('watch', () => {
+    gulp.watch(conf.css.src + '**/*.styl', gulp.series('css'));
+    gulp.watch(conf.js.src + '**/*.js', gulp.series('js'));
+    gulp.watch(conf.images.src + '*.{jpg,png}', gulp.series('images'));
 });
 
-gulp.task('watch', function() {
-    gulp.watch('resources/assets/styl' + '/*.*', ['css']);
-    gulp.watch(conf.js.src + '/*.*', ['js']);
-    gulp.watch(conf.images.src + '/*.*', ['images']);
-});
-gulp.task('dev', ['vendor:css', 'vendor:js', 'vendor:images', 'css', 'js', 'images', 'watch']);
-gulp.task('default', ['clean'], function() {
-    gulp.run('dev');
-});
+gulp.task('development', gulp.series(
+    'clean',
+    'vendor:css',
+    // 'vendor:js',
+    'css',
+    'js',
+    'images',
+    'index',
+    'html',
+    'watch',
+    (done) => done()
+));
+
+gulp.task('default', gulp.series('development', (done) => done()));
