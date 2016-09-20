@@ -1,27 +1,22 @@
-﻿<!DOCTYPE HTML>
+﻿<!doctype html>
 <html>
 	<head>
 		<title>PencilBOOM Главная</title>
 		<meta charset="utf-8">
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-		<!-- <link rel="stylesheet" type="text/css" href="onepage-scroll.css"> -->
 		<link rel="stylesheet" type="text/css" href="css/colorbox.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
-		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script src="js/script.js"></script>
 	</head>
 	<body class="body">
-		<!-- <ul class="onepage-pagination"><li><a data-index="1" href="#1" class=""></a></li><li><a data-index="2" href="#2" class="active"></a></li><li><a data-index="3" href="#3"></a></li></ul> -->
 		<div id="header">
 			<div id="secondary_menu">
-				<!-- <a href="#"><img src="images/second_menu_button.png"></a> -->
 				<input type="checkbox" id="hidden_menu_button" class="hidden_menu_button">
 				<label class="button_menu" for="hidden_menu_button">
 					<span class="first"></span>
 					<span class="second"></span>
 					<span class="third"></span>
 				</label>
+
 				<ul class="hidden_menu">
 					<li><a href="#">ГЛАВНАЯ</a></li>
 					<li><a href="exhibitions.html">ВЫСТАВКИ</a></li>
@@ -29,41 +24,52 @@
 					<li><a href="studios.html">СТУДИИ</a></li>
 				</ul>	
 			</div>
+
 			<div class="logo">
-				<a href="#"><img class="circle" src="images/Logo_circle_55x55.gif">
-							<img src="images/logo3_without_circle.png">
+				<a href="#">
+					<img class="circle" src="images/Logo_circle_55x55.gif">
+					<img src="images/logo3_without_circle.png">
 				</a>
 			</div>
+
 			<div id="main_menu" >
 				<ul>
-				<li><a href="#">ГЛАВНАЯ</a></li>
-				<li><a href="exhibitions.html">ВЫСТАВКИ</a></li>
-				<li><a href="contests.html">КОНКУРСЫ</a></li>
-				<li><a href="studios.html">СТУДИИ</a></li>
+					<li><a href="#">ГЛАВНАЯ</a></li>
+					<li><a href="exhibitions.html">ВЫСТАВКИ</a></li>
+					<li><a href="contests.html">КОНКУРСЫ</a></li>
+					<li><a href="studios.html">СТУДИИ</a></li>
 				</ul>
 			</div>
+
 			<div id="user_block">
 				<div class="create_buttons">
 					<a href="#">СОЗДАТЬ ВЫСТАВКУ</a>
 					<a href="#">УСТРОИТЬ КОНКУРС</a>
 				</div>
+
 				<div id="search">
 					<input type="text" name="search" value="Поиск...">
-					<a href="#"><img src="images/search.png"></a>
+					<a href="#">
+						<img src="images/search.png">
+					</a>
 				</div>
+
 				<select>
 					<option>Рус</option>
 					<option>EN</option>
 				</select>
 			</div>
 		</div>
+
 		<div id="header_fake"></div>
-		
+
 		<div id="tagline">
 			<div class="slogan">Смени карандаш</div>
 		</div>
+
 		<div id="filter">
 			<div class="content">
+
 				<div id="filter_block">
 					<h2>Найди своё:</h2>
 					<div class="form_item">
@@ -73,206 +79,358 @@
 							<option>Лепка</option>
 						</select>
 					</div>
+
 					<div class="form_item">
 						<label for="first_date">ДОБАВЛЕНО С:</label>
 						<input type="text" id="first_date" placeholder="14 / марта / 2016">
 					</div>
+
 					<div class="form_item">
 						<label for="first_date">ПО:</label>
 						<input type="text" id="second_date" placeholder="24 / марта / 2016">
 					</div>
+
 					<div class="form_item">
 						<label for="genre">РЕЙТИНГ:</label>
-						<select name="Genre" id="genre" >
+						<select name="Genre" id="genre">
 							<option>По возрастанию</option>
 							<option>По убыванию</option>
 						</select>
 					</div>
+
 					<div class="form_item">
 						<label for="genre">ВОЗРАСТ:</label>
-						<select name="Genre" id="genre" >
+						<select name="Genre" id="genre">
 							<option>0-2 года</option>
 							<option>2-4 года</option>
 							<option>4-6 лет</option>
 						</select>
 					</div>
+
 					<div class="form_item_check">
 						<input type="checkbox" id="take_part_compet" checked>
 						<label for="take_part_compet">Участвуют в конкурсах</label>
 					</div>	
+
 					<div class="form_item_check">
 						<input type="checkbox" id="in_stud" checked>
 						<label for="in_stud">Cостоят в студиях</label>
 					</div>	
 				</div>
+
 				<div id="goldfish_block">
-					<img id="border_goldfish" src="images/border_for_goldfish.png"></img>
-					<img id="goldfish" class="fishes" src="images/goldfish.png"></img>
+					<img id="border_goldfish" src="images/border_for_goldfish.png">
+					<img id="goldfish" class="fishes" src="images/goldfish.png">
 				</div>
 			</div>
 		</div>
-						<!-- </section> -->
-		<div id="gallery" class="gallery">						
+
+		<div id="gallery" class="gallery">
 			<div id="block_1" class=" gallery_block">
-				<img id="fish_1" class="fishes" src="images/fish-44.png"></img>
-				<img id="fish_1_1" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_2" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_2_2" class="fishes" src="images/fish-44.png"></img>
-				<script>
-					$(document).ready(function () {
-					$('a.colorbox').colorbox({maxWidth:'90%',maxHeight:'90%', rel: 'colorbox', retinaImage : 'true'});
-					});
-					// var borderTopColor = $('#fish_1').css('top');
-					// console.log(borderTopColor);
-				</script>
-				<div id="content" class="content">	
-					<a class="colorbox" href="images/first_block/7.png"><img src="images/first_block/7_icon.png" id="grid_img-7"></a>
-					<a class="colorbox" href="images/first_block/12.png"><img src="images/first_block/12_icon.png" id="grid_img-13"></a>
-					<a class="colorbox" href="images/first_block/9.png"><img src="images/first_block/9_icon.png" id="grid_img-9"></a>
-					<a class="colorbox" href="images/first_block/10.png"><img src="images/first_block/10_icon.png" id="grid_img-10"></a>
-					<a class="colorbox" href="images/first_block/14.png"><img src="images/first_block/14_icon.png" id="grid_img-11"></a>
-					<a class="colorbox" href="images/first_block/13.png"><img src="images/first_block/13_icon.png" id="grid_img-12"></a>
-					<a class="colorbox" href="images/first_block/8.png"><img src="images/first_block/8_icon.png" id="grid_img-8"></a>
-					<a class="colorbox" href="images/first_block/11.png"><img src="images/first_block/11_icon.png" id="grid_img-14"></a>	 
-					<a class="colorbox"  href="images/first_block/1.png"><img src="images/first_block/1_icon.png" id="grid_img-1"></a>
-					<a class="colorbox" href="images/first_block/2.png"><img src="images/first_block/2_icon.png" id="grid_img-2"></a>
-					<a class="colorbox" href="images/first_block/4.png"><img src="images/first_block/4_icon.png" id="grid_img-3"></a>
-					<a class="colorbox" href="images/first_block/5.png"><img src="images/first_block/5_icon.png" id="grid_img-4"></a>
-					<a class="colorbox" href="images/first_block/6.png"><img src="images/first_block/6_icon.png" id="grid_img-5"></a>
-					<a class="colorbox" href="images/first_block/3.png"><img src="images/first_block/3_icon.png" id="grid_img-6"></a>
+				<img id="fish_1" class="fishes" src="images/fish-44.png">
+				<img id="fish_1_1" class="fishes" src="images/fish-1.png">
+				<img id="fish_2" class="fishes" src="images/fish-1.png">
+				<img id="fish_2_2" class="fishes" src="images/fish-44.png">
+
+				<div id="content" class="content">
+					<a class="colorbox" href="images/first_block/7.png">
+						<img src="images/first_block/7_icon.png" id="grid_img-7">
+					</a>
+					<a class="colorbox" href="images/first_block/12.png">
+						<img src="images/first_block/12_icon.png" id="grid_img-13">
+					</a>
+					<a class="colorbox" href="images/first_block/9.png">
+						<img src="images/first_block/9_icon.png" id="grid_img-9">
+					</a>
+					<a class="colorbox" href="images/first_block/10.png">
+						<img src="images/first_block/10_icon.png" id="grid_img-10">
+					</a>
+					<a class="colorbox" href="images/first_block/14.png">
+						<img src="images/first_block/14_icon.png" id="grid_img-11">
+					</a>
+					<a class="colorbox" href="images/first_block/13.png">
+						<img src="images/first_block/13_icon.png" id="grid_img-12">
+					</a>
+					<a class="colorbox" href="images/first_block/8.png">
+						<img src="images/first_block/8_icon.png" id="grid_img-8">
+					</a>
+					<a class="colorbox" href="images/first_block/11.png">
+						<img src="images/first_block/11_icon.png" id="grid_img-14">
+					</a>
+					<a class="colorbox"  href="images/first_block/1.png">
+						<img src="images/first_block/1_icon.png" id="grid_img-1">
+					</a>
+					<a class="colorbox" href="images/first_block/2.png">
+						<img src="images/first_block/2_icon.png" id="grid_img-2">
+					</a>
+					<a class="colorbox" href="images/first_block/4.png">
+						<img src="images/first_block/4_icon.png" id="grid_img-3">
+					</a>
+					<a class="colorbox" href="images/first_block/5.png">
+						<img src="images/first_block/5_icon.png" id="grid_img-4">
+					</a>
+					<a class="colorbox" href="images/first_block/6.png">
+						<img src="images/first_block/6_icon.png" id="grid_img-5">
+					</a>
+					<a class="colorbox" href="images/first_block/3.png">
+						<img src="images/first_block/3_icon.png" id="grid_img-6">
+					</a>
 				</div>
 			</div>
+
 			<div id="block_2" class=" gallery_block">
-				<img id="fish_3" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_3_3" class="fishes" src="images/fish-44.png"></img>
-				<img id="fish_4" class="fishes" src="images/fish-44.png"></img>
-				<img id="fish_4_4" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_5" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_5_5" class="fishes" src="images/fish-44.png"></img>
+				<img id="fish_3" class="fishes" src="images/fish-1.png">
+				<img id="fish_3_3" class="fishes" src="images/fish-44.png">
+				<img id="fish_4" class="fishes" src="images/fish-44.png">
+				<img id="fish_4_4" class="fishes" src="images/fish-1.png">
+				<img id="fish_5" class="fishes" src="images/fish-1.png">
+				<img id="fish_5_5" class="fishes" src="images/fish-44.png">
 
 				<div class="content">
-					<a class="colorbox"  href="images/sec_block/1.png"><img src="images/sec_block/1_icon.png" id="grid_img-15"></a>
-					<a class="colorbox" href="images/sec_block/2.png"><img src="images/sec_block/2_icon.png" id="grid_img-16"></a>
-					<a class="colorbox" href="images/sec_block/3.png"><img src="images/sec_block/3_icon.png" id="grid_img-17"></a>
-					<a class="colorbox" href="images/sec_block/4.png"><img src="images/sec_block/4_icon.png" id="grid_img-18"></a>
-					<a class="colorbox" href="images/sec_block/5.png"><img src="images/sec_block/5_icon.png" id="grid_img-19"></a>
-					<a class="colorbox" href="images/sec_block/6.png"><img src="images/sec_block/6_icon.png" id="grid_img-20"></a>
-					<a class="colorbox" href="images/sec_block/7.png"><img src="images/sec_block/7_icon.png" id="grid_img-21"></a>
-					<a class="colorbox" href="images/sec_block/8.png"><img src="images/sec_block/8_icon.png" id="grid_img-22"></a>
-					<a class="colorbox" href="images/sec_block/9.png"><img src="images/sec_block/9_icon.png" id="grid_img-23"></a>
-					<a class="colorbox" href="images/sec_block/11.png"><img src="images/sec_block/11_icon.png" id="grid_img-24"></a>
-					<a class="colorbox" href="images/sec_block/10.png"><img src="images/sec_block/10_icon.png" id="grid_img-25"></a>
-					<a class="colorbox"  href="images/3d_block/1.png"><img src="images/3d_block/1_icon.png" id="grid_img-26"></a>
-					<a class="colorbox" href="images/3d_block/2.png"><img src="images/3d_block/2_icon.png" id="grid_img-27"></a>
-					<a class="colorbox" href="images/3d_block/3.png"><img src="images/3d_block/3_icon.png" id="grid_img-28"></a>
-					<a class="colorbox" href="images/3d_block/8.png"><img src="images/3d_block/8_icon.png" id="grid_img-29"></a>
-					<a class="colorbox" href="images/3d_block/6.png"><img src="images/3d_block/6_icon.png" id="grid_img-30"></a>
-					<a class="colorbox" href="images/3d_block/9.png"><img src="images/3d_block/9_icon.png" id="grid_img-31"></a>
-					<a class="colorbox" href="images/3d_block/4.png"><img src="images/3d_block/4_icon.png" id="grid_img-32"></a>
-					<a class="colorbox" href="images/3d_block/5.png"><img src="images/3d_block/5_icon.png" id="grid_img-33"></a>
-					<a class="colorbox" href="images/3d_block/7.png"><img src="images/3d_block/7_icon.png" id="grid_img-34"></a>
+					<a class="colorbox"  href="images/sec_block/1.png">
+						<img src="images/sec_block/1_icon.png" id="grid_img-15">
+					</a>
+					<a class="colorbox" href="images/sec_block/2.png">
+						<img src="images/sec_block/2_icon.png" id="grid_img-16">
+					</a>
+					<a class="colorbox" href="images/sec_block/3.png">
+						<img src="images/sec_block/3_icon.png" id="grid_img-17">
+					</a>
+					<a class="colorbox" href="images/sec_block/4.png">
+						<img src="images/sec_block/4_icon.png" id="grid_img-18">
+					</a>
+					<a class="colorbox" href="images/sec_block/5.png">
+						<img src="images/sec_block/5_icon.png" id="grid_img-19">
+					</a>
+					<a class="colorbox" href="images/sec_block/6.png">
+						<img src="images/sec_block/6_icon.png" id="grid_img-20">
+					</a>
+					<a class="colorbox" href="images/sec_block/7.png">
+						<img src="images/sec_block/7_icon.png" id="grid_img-21">
+					</a>
+					<a class="colorbox" href="images/sec_block/8.png">
+						<img src="images/sec_block/8_icon.png" id="grid_img-22">
+					</a>
+					<a class="colorbox" href="images/sec_block/9.png">
+						<img src="images/sec_block/9_icon.png" id="grid_img-23">
+					</a>
+					<a class="colorbox" href="images/sec_block/11.png">
+						<img src="images/sec_block/11_icon.png" id="grid_img-24">
+					</a>
+					<a class="colorbox" href="images/sec_block/10.png">
+						<img src="images/sec_block/10_icon.png" id="grid_img-25">
+					</a>
+					<a class="colorbox"  href="images/3d_block/1.png">
+						<img src="images/3d_block/1_icon.png" id="grid_img-26">
+					</a>
+					<a class="colorbox" href="images/3d_block/2.png">
+						<img src="images/3d_block/2_icon.png" id="grid_img-27">
+					</a>
+					<a class="colorbox" href="images/3d_block/3.png">
+						<img src="images/3d_block/3_icon.png" id="grid_img-28">
+					</a>
+					<a class="colorbox" href="images/3d_block/8.png">
+						<img src="images/3d_block/8_icon.png" id="grid_img-29">
+					</a>
+					<a class="colorbox" href="images/3d_block/6.png">
+						<img src="images/3d_block/6_icon.png" id="grid_img-30">
+					</a>
+					<a class="colorbox" href="images/3d_block/9.png">
+						<img src="images/3d_block/9_icon.png" id="grid_img-31">
+					</a>
+					<a class="colorbox" href="images/3d_block/4.png">
+						<img src="images/3d_block/4_icon.png" id="grid_img-32">
+					</a>
+					<a class="colorbox" href="images/3d_block/5.png">
+						<img src="images/3d_block/5_icon.png" id="grid_img-33">
+					</a>
+					<a class="colorbox" href="images/3d_block/7.png">
+						<img src="images/3d_block/7_icon.png" id="grid_img-34">
+					</a>
 				</div>
 			</div>
+
 			<div id="dolphin_block">
-				<img id="dolphin" class="fishes" src="images/dolphin.png"></img>
-				<img id="dolphin2" class="fishes" src="images/fish-44.png"></img>
+				<img id="dolphin" class="fishes" src="images/dolphin.png">
+				<img id="dolphin2" class="fishes" src="images/fish-44.png">
 			</div>
+
 			<div id="block_3" class=" gallery_block">
-				<img id="fish_6" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_6_6" class="fishes" src="images/fish-44.png"></img>
-				<img id="fish_7" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_7_7" class="fishes" src="images/fish-44.png"></img>
-				<img id="fish_8" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_8_8" class="fishes" src="images/fish-44.png"></img>
+				<img id="fish_6" class="fishes" src="images/fish-1.png">
+				<img id="fish_6_6" class="fishes" src="images/fish-44.png">
+				<img id="fish_7" class="fishes" src="images/fish-1.png">
+				<img id="fish_7_7" class="fishes" src="images/fish-44.png">
+				<img id="fish_8" class="fishes" src="images/fish-1.png">
+				<img id="fish_8_8" class="fishes" src="images/fish-44.png">
+
 				<div class="content">
-					<a class="colorbox"  href="images/4th_block/1.png"><img src="images/4th_block/1_icon.png" id="grid_img-41"></a>
-					<a class="colorbox" href="images/4th_block/2.png"><img src="images/4th_block/2_icon.png" id="grid_img-42"></a>
-					<a class="colorbox" href="images/4th_block/3.png"><img src="images/4th_block/3_icon.png" id="grid_img-43"></a>
-					<a class="colorbox" href="images/4th_block/4.png"><img src="images/4th_block/4_icon.png" id="grid_img-44"></a>
-					<a class="colorbox" href="images/4th_block/5.png"><img src="images/4th_block/5_icon.png" id="grid_img-45"></a>
-					<a class="colorbox" href="images/4th_block/6.png"><img src="images/4th_block/6_icon.png" id="grid_img-46"></a>
-					<a class="colorbox" href="images/4th_block/7.png"><img src="images/4th_block/7_icon.png" id="grid_img-47"></a>
-					<a class="colorbox" href="images/4th_block/8.png"><img src="images/4th_block/8_icon.png" id="grid_img-48"></a>
-					<a class="colorbox" href="images/4th_block/9.png"><img src="images/4th_block/9_icon.png" id="grid_img-49"></a>
-					<a class="colorbox" href="images/4th_block/10.png"><img src="images/4th_block/10_icon.png" id="grid_img-50"></a>
-					<a class="colorbox" href="images/4th_block/11.png"><img src="images/4th_block/11_icon.png" id="grid_img-51"></a>
-					<a class="colorbox" href="images/4th_block/12.png"><img src="images/4th_block/12_icon.png" id="grid_img-52"></a>
-					<a class="colorbox" href="images/4th_block/13.png"><img src="images/4th_block/13_icon.png" id="grid_img-53"></a>
-					<a class="colorbox" href="images/4th_block/14.png"><img src="images/4th_block/14_icon.png" id="grid_img-54"></a>
-					<a class="colorbox" href="images/4th_block/15.png"><img src="images/4th_block/15_icon.png" id="grid_img-55"></a>
-					<a class="colorbox" href="images/4th_block/16.png"><img src="images/4th_block/16_icon.png" id="grid_img-56"></a>
-					<a class="colorbox"  href="images/5th_block/1.png"><img src="images/5th_block/1_icon.png" id="grid_img-57"></a>
-					<a class="colorbox" href="images/5th_block/2.png"><img src="images/5th_block/2_icon.png" id="grid_img-58"></a>
-					<a class="colorbox" href="images/5th_block/7.png"><img src="images/5th_block/7_icon.png" id="grid_img-63"></a>
-					<a class="colorbox" href="images/5th_block/6.png"><img src="images/5th_block/6_icon.png" id="grid_img-62"></a>
-					<a class="colorbox" href="images/5th_block/3.png"><img src="images/5th_block/3_icon.png" id="grid_img-59"></a>
-					<a class="colorbox" href="images/5th_block/4.png"><img src="images/5th_block/4_icon.png" id="grid_img-60"></a>
-					<a class="colorbox" href="images/5th_block/5.png"><img src="images/5th_block/5_icon.png" id="grid_img-61"></a>
-					<a class="colorbox" href="images/5th_block/8.png"><img src="images/5th_block/8_icon.png" id="grid_img-64"></a>
+					<a class="colorbox" href="images/4th_block/1.png">
+						<img src="images/4th_block/1_icon.png" id="grid_img-41">
+					</a>
+					<a class="colorbox" href="images/4th_block/2.png">
+						<img src="images/4th_block/2_icon.png" id="grid_img-42">
+					</a>
+					<a class="colorbox" href="images/4th_block/3.png">
+						<img src="images/4th_block/3_icon.png" id="grid_img-43">
+					</a>
+					<a class="colorbox" href="images/4th_block/4.png">
+						<img src="images/4th_block/4_icon.png" id="grid_img-44">
+					</a>
+					<a class="colorbox" href="images/4th_block/5.png">
+						<img src="images/4th_block/5_icon.png" id="grid_img-45">
+					</a>
+					<a class="colorbox" href="images/4th_block/6.png">
+						<img src="images/4th_block/6_icon.png" id="grid_img-46">
+					</a>
+					<a class="colorbox" href="images/4th_block/7.png">
+						<img src="images/4th_block/7_icon.png" id="grid_img-47">
+					</a>
+					<a class="colorbox" href="images/4th_block/8.png">
+						<img src="images/4th_block/8_icon.png" id="grid_img-48">
+					</a>
+					<a class="colorbox" href="images/4th_block/9.png">
+						<img src="images/4th_block/9_icon.png" id="grid_img-49">
+					</a>
+					<a class="colorbox" href="images/4th_block/10.png">
+						<img src="images/4th_block/10_icon.png" id="grid_img-50">
+					</a>
+					<a class="colorbox" href="images/4th_block/11.png">
+						<img src="images/4th_block/11_icon.png" id="grid_img-51">
+					</a>
+					<a class="colorbox" href="images/4th_block/12.png">
+						<img src="images/4th_block/12_icon.png" id="grid_img-52">
+					</a>
+					<a class="colorbox" href="images/4th_block/13.png">
+						<img src="images/4th_block/13_icon.png" id="grid_img-53">
+					</a>
+					<a class="colorbox" href="images/4th_block/14.png">
+						<img src="images/4th_block/14_icon.png" id="grid_img-54">
+					</a>
+					<a class="colorbox" href="images/4th_block/15.png">
+						<img src="images/4th_block/15_icon.png" id="grid_img-55">
+					</a>
+					<a class="colorbox" href="images/4th_block/16.png">
+						<img src="images/4th_block/16_icon.png" id="grid_img-56">
+					</a>
+					<a class="colorbox"  href="images/5th_block/1.png">
+						<img src="images/5th_block/1_icon.png" id="grid_img-57">
+					</a>
+					<a class="colorbox" href="images/5th_block/2.png">
+						<img src="images/5th_block/2_icon.png" id="grid_img-58">
+					</a>
+					<a class="colorbox" href="images/5th_block/7.png">
+						<img src="images/5th_block/7_icon.png" id="grid_img-63">
+					</a>
+					<a class="colorbox" href="images/5th_block/6.png">
+						<img src="images/5th_block/6_icon.png" id="grid_img-62">
+					</a>
+					<a class="colorbox" href="images/5th_block/3.png">
+						<img src="images/5th_block/3_icon.png" id="grid_img-59">
+					</a>
+					<a class="colorbox" href="images/5th_block/4.png">
+						<img src="images/5th_block/4_icon.png" id="grid_img-60">
+					</a>
+					<a class="colorbox" href="images/5th_block/5.png">
+						<img src="images/5th_block/5_icon.png" id="grid_img-61">
+					</a>
+					<a class="colorbox" href="images/5th_block/8.png">
+						<img src="images/5th_block/8_icon.png" id="grid_img-64">
+					</a>
 				</div>
 			</div>
 
 			<div id="submarine_block">
-				<img id="submarine" class="fishes" src="images/submarine.png"></img>
-				<img id="submarine2" class="fishes" src="images/fish11.png"></img>
+				<img id="submarine" class="fishes" src="images/submarine.png">
+				<img id="submarine2" class="fishes" src="images/fish11.png">
 			</div>
 
 			<div id="block_4" class=" gallery_block">
-				<img id="fish_9" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_9_9" class="fishes" src="images/fish-44.png"></img>
-				<img id="fish_10" class="fishes" src="images/fish-1.png"></img>
-				<img id="fish_10_10" class="fishes" src="images/fish-44.png"></img>
+				<img id="fish_9" class="fishes" src="images/fish-1.png">
+				<img id="fish_9_9" class="fishes" src="images/fish-44.png">
+				<img id="fish_10" class="fishes" src="images/fish-1.png">
+				<img id="fish_10_10" class="fishes" src="images/fish-44.png">
 
 				<div class="content">
-					<a class="colorbox" href="images/3d_block/15.png"><img src="images/3d_block/15_icon.png" id="grid_img-40"></a>
-					<a class="colorbox" href="images/3d_block/10.png"><img src="images/3d_block/10_icon.png" id="grid_img-35"></a>
-					<a class="colorbox" href="images/3d_block/11.png"><img src="images/3d_block/11_icon.png" id="grid_img-36"></a>
-					<a class="colorbox" href="images/3d_block/12.png"><img src="images/3d_block/12_icon.png" id="grid_img-37"></a>
-					<a class="colorbox" href="images/3d_block/13.png"><img src="images/3d_block/13_icon.png" id="grid_img-38"></a>
-					<a class="colorbox" href="images/3d_block/14.png"><img src="images/3d_block/14_icon.png" id="grid_img-39"></a>
-					<a class="colorbox" href="images/5th_block/9.png"><img src="images/5th_block/9_icon.png" id="grid_img-65"></a>
-					<a class="colorbox" href="images/5th_block/10.png"><img src="images/5th_block/10_icon.png" id="grid_img-66"></a>
-					<a class="colorbox" href="images/5th_block/11.png"><img src="images/5th_block/11_icon.png" id="grid_img-67"></a>
-					<a class="colorbox" href="images/5th_block/12.png"><img src="images/5th_block/12_icon.png" id="grid_img-68"></a>
-					<a class="colorbox" href="images/5th_block/13.png"><img src="images/5th_block/13_icon.png" id="grid_img-69"></a>
-				</div>
-			</div>				
-		</div>
-							<div id="footer">
-								<div class="logo">
-									<a href="#"><img src="images/logo.png"></a>
-									<div id="social_buttons">
-										<a href="#"><img src="images/social_buttons.png" name="facebook" ></a>
-									</div>
-								</div>
-								<div id="subscribe">
-									<span>Будь в курсе!</span>
-									<div>
-										<input type="text" class="sub-field" name="mail">
-										<input type="submit" class="sub-buton" value="ПОДПИСАТЬСЯ"> 
-									</div>
-								</div>
-								<div id="links">
-									<div id="main_menu" class="footer-list">
-										<ul>
-											<li><a href="#">Главная</a></li>
-											<li><a href="exhibitions.html">Выставки</a></li>
-											<li><a href="contests.html">Конкурсы</a></li>
-											<li><a href="studios.html">Студии</a></li>
-										</ul>
-									</div> 
-									<div id="about_links" class="footer-list">
-										<ul>
-											<li><a href="#">FAQ</a></li>
-											<li><a href="#">Пользовательское соглашение</a></li>
-											<li><a href="#">Правила сайта</a></li>
-											<li><a href="#">О проекте</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-					</div>
+					<a class="colorbox" href="images/3d_block/15.png">
+						<img src="images/3d_block/15_icon.png" id="grid_img-40">
+					</a>
+					<a class="colorbox" href="images/3d_block/10.png">
+						<img src="images/3d_block/10_icon.png" id="grid_img-35">
+					</a>
+					<a class="colorbox" href="images/3d_block/11.png">
+						<img src="images/3d_block/11_icon.png" id="grid_img-36">
+					</a>
+					<a class="colorbox" href="images/3d_block/12.png">
+						<img src="images/3d_block/12_icon.png" id="grid_img-37">
+					</a>
+					<a class="colorbox" href="images/3d_block/13.png">
+						<img src="images/3d_block/13_icon.png" id="grid_img-38">
+					</a>
+					<a class="colorbox" href="images/3d_block/14.png">
+						<img src="images/3d_block/14_icon.png" id="grid_img-39">
+					</a>
+					<a class="colorbox" href="images/5th_block/9.png">
+						<img src="images/5th_block/9_icon.png" id="grid_img-65">
+					</a>
+					<a class="colorbox" href="images/5th_block/10.png">
+						<img src="images/5th_block/10_icon.png" id="grid_img-66">
+					</a>
+					<a class="colorbox" href="images/5th_block/11.png">
+						<img src="images/5th_block/11_icon.png" id="grid_img-67">
+					</a>
+					<a class="colorbox" href="images/5th_block/12.png">
+						<img src="images/5th_block/12_icon.png" id="grid_img-68">
+					</a>
+					<a class="colorbox" href="images/5th_block/13.png">
+						<img src="images/5th_block/13_icon.png" id="grid_img-69">
+					</a>
 				</div>
 			</div>
+		</div>
+
+		<div id="footer">
+			<div class="logo">
+				<a href="#">
+					<img src="images/logo.png">
+				</a>
+				<div id="social_buttons">
+					<a href="#">
+						<img src="images/social_buttons.png" name="facebook">
+					</a>
+				</div>
+			</div>
+
+			<div id="subscribe">
+				<span>Будь в курсе!</span>
+				<div>
+					<input type="text" class="sub-field" name="mail">
+					<input type="submit" class="sub-buton" value="ПОДПИСАТЬСЯ"> 
+				</div>
+			</div>
+
+			<div id="links">
+				<div id="main_menu" class="footer-list">
+					<ul>
+						<li><a href="#">Главная</a></li>
+						<li><a href="exhibitions.html">Выставки</a></li>
+						<li><a href="contests.html">Конкурсы</a></li>
+						<li><a href="studios.html">Студии</a></li>
+					</ul>
+				</div> 
+
+				<div id="about_links" class="footer-list">
+					<ul>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Пользовательское соглашение</a></li>
+						<li><a href="#">Правила сайта</a></li>
+						<li><a href="#">О проекте</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
+		<script src="js/script.js"></script>
 	</body>
 </html>

@@ -1,4 +1,13 @@
-﻿window.onload=function() {
+﻿$(document).ready(function () {
+	$('a.colorbox').colorbox({
+		"maxWidth": "90%",
+		"maxHeight": "90%",
+		"rel": "colorbox",
+		"retinaImage": true
+	});
+});
+
+window.onload=function() {
 	doubleFishLeft("#fish_1", "#fish_1_1", "#grid_img-7", "#grid_img-13");
 	doubleFishRight("#fish_2", "#fish_2_2", "#grid_img-6");
 	doubleFishRight("#fish_3", "#fish_3_3", "#grid_img-19");
@@ -12,82 +21,84 @@
 	goldfish("#border_goldfish");
 	doubleBigFishLeft("#dolphin", "#dolphin2");
 	doubleBigFishRight("#submarine", "#submarine2");
-
-	};
-
-function doubleFishRight(first_fish, second_fish, leftimage) {
-	var element = document.querySelector(leftimage);
-	var stoppoint = element.getBoundingClientRect().right;
-	stoppoint = stoppoint + 10 + 'px';
-	var first_point = document.querySelector(first_fish);
-	first_point = first_point.style.left;
-	var first_point2 = document.querySelector(second_fish);
-	first_point2 = first_point2.style.left;
-
-	var last_point = document.querySelector(leftimage);
-	last_point = last_point.getBoundingClientRect().left;
-	last_point = last_point + 'px';
-
-	// var last_point = -document.querySelector(first_fish).width + "px";
-	// var last_point2 = -document.querySelector(first_fish).width + "px";
-	$(first_fish).animate({
-			left: stoppoint
-	}, 
-	{
-  	duration: 10000,
-  	easing: "swing",
-  	complete : function() {
-  		setTimeout(function() {
-			$(first_fish).animate({
-					left: last_point,
-					opacity: "0"
-			}, 
-		  	{
-		  		duration: 10000,
-		  		easing: "linear",
-		  		complete : function() {
-		  			$(this).css({left: first_point, opacity: "1"});
-	  				$(second_fish).animate({
-							left: stoppoint
-					}, 
-					{
-						duration: 10000,
-						easing: "swing",
-						complete : function() {
-							setTimeout(function() {
-
-										$(second_fish).animate({
-												left: last_point,
-												opacity: "0"
-										}, 
-									  	{
-									  		duration: 10000,
-									  		easing: "linear",
-									  		complete : function() {
-									  			$(this).css({left: first_point2, opacity: "1"});
-									  			
-
-									  			setTimeout(function() {
-									  			doubleFishRight(first_fish, second_fish, leftimage);
-									  			}, 1)
-									  		},
-									  	});
-
-								 }, 5000)
-						},
-					});
-					
-		  		},
-		  	});
-
-	 }, 5000)
-  	},
-	});
-
 };
 
+function doubleFishRight(first_fish, second_fish, leftimage) {
+	var elementGetBoundingClientRect = document.querySelector(leftimage).getBoundingClientRect()
+		, stoppoint = elementGetBoundingClientRect.right + 10 + 'px'
+		, first_point = document.querySelector(first_fish).style.left
+		, first_point2 = document.querySelector(second_fish).style.left
+		, last_point = elementGetBoundingClientRect.left + 'px';
 
+	// stoppoint = stoppoint + 10 + 'px';
+	// first_point = first_point.style.left;
+	// first_point2 = first_point2.style.left;
+	
+	// last_point = last_point.getBoundingClientRect().left;
+	// last_point = last_point + 'px';
 
+	$(first_fish).animate(
+		{
+			"left": stoppoint
+		}, 
+		{
+	  		"duration": 10000,
+	  		"easing": "swing",
+	  		"complete": function() {
+		  		setTimeout(function() {
+					$(first_fish).animate(
+						{
+							"left": last_point,
+							"opacity": 0
+						}, 
+					  	{
+					  		"duration": 10000,
+					  		"easing": "linear",
+					  		"complete": function() {
+					  			$(this).css({
+					  				"left": first_point,
+					  				"opacity": 1
+					  			});
+				  				$(second_fish).animate(
+					  				{
+										"left": stoppoint
+									}, 
+									{
+										"duration": 10000,
+										"easing": "swing",
+										"complete": function() {
+											setTimeout(function() {
+												$(second_fish).animate(
+													{
+														"left": last_point,
+														"opacity": 0
+													}, 
+												  	{
+												  		"duration": 10000,
+												  		"easing": "linear",
+												  		"complete": function() {
+												  			$(this).css({
+												  				"left": first_point2,
+												  				"opacity": 1
+												  			});
+												  			setTimeout(function() {
+												  				doubleFishRight(first_fish, second_fish, leftimage);
+												  			}, 1);
+												  		},
+												  	}
+											  	);
+											}, 5000)
+										},
+									}
+								);
+					  		},
+					  	}
+				  	);
+				}, 5000);
+	  		}
+		}
+	);
+};
 function doubleFishLeft(first_fish, second_fish, leftimage, rightimage) {	
 	var element = document.querySelector(leftimage);
 	var stoppoint = element.getBoundingClientRect().right;
@@ -153,11 +164,7 @@ function doubleFishLeft(first_fish, second_fish, leftimage, rightimage) {
 	 }, 5000)
   	},
 	});
-
 };
-
-
-
 function goldfish(stopPoint) {
 	// element = document.querySelector(stopPoint);
 	// var stoppoint = element.getBoundingClientRect().left;
@@ -192,7 +199,6 @@ function goldfish(stopPoint) {
   	},
 	});
 };
-
 function doubleBigFishLeft(first_fish, second_fish) {
 	stoppoint = $(first_fish).width();
 	stoppoint = $(window).width()/2 - stoppoint/2 + "px";
@@ -254,9 +260,7 @@ function doubleBigFishLeft(first_fish, second_fish) {
 	 }, 5000)
   	},
 	});
-
 };
-
 function doubleBigFishRight(first_fish, second_fish) {
 	stoppoint = $(first_fish).width();
 	stoppoint = $(window).width()/2 - stoppoint/2 + "px";
@@ -264,7 +268,6 @@ function doubleBigFishRight(first_fish, second_fish) {
 	stoppoint2 = $(window).width()/2 - stoppoint2 / 2 + "px";
 	
 	first_point = document.querySelector(first_fish);
-	// console.log(first_point);
 	first_point = first_point.style.left;
 	first_point2 = document.querySelector(second_fish);
 	first_point2 = first_point2.style.left;
@@ -321,10 +324,7 @@ function doubleBigFishRight(first_fish, second_fish) {
 	 }, 5000)
   	},
 	});
-
 };
-
-
 function fish_move(to, persent, to2, value) {
 
 	$("#fish_1").animate({
@@ -357,72 +357,3 @@ function fish_move(to, persent, to2, value) {
   	},
 	});
 };
-
-
-
-
-// function fish_2() {
-// 	$("#fish_2").animate({
-// 			right: "61%"
-// 	}, 
-// 	{
-//   	duration: 9000,
-//   	easing: "swing",
-//   	complete : function() {
-  		 
-//   			setTimeout(function() {
-
-//   					$("#fish_2").animate({
-// 								right: "100%"
-// 						}, 
-// 					  	{
-// 					  		duration: 5000,
-// 					  		easing: "linear",
-// 					  		complete : function() {
-// 					  			$(this).css({right: -240 });
-					  			
-
-// 					  			setTimeout(function() {
-// 					  			fish_2();
-// 					  		}, 1)
-// 					  		},
-// 					  	});
-
-//   			 }, 5000)
-//   	},
-// 	});
- 	
-// };
-
-// function fish_3() {
-// 	$("#fish_3").animate({
-// 			left: "59%"
-// 	}, 
-// 	{
-//   	duration: 9000,
-//   	easing: "swing",
-//   	complete : function() {
-  		 
-//   			setTimeout(function() {
-
-//   					$("#fish_3").animate({
-// 								left: "100%"
-// 						}, 
-// 					  	{
-// 					  		duration: 5000,
-// 					  		easing: "linear",
-// 					  		complete : function() {
-// 					  			$(this).css({left: -240 });
-					  			
-
-// 					  			setTimeout(function() {
-// 					  			fish_3();
-// 					  		}, 1)
-// 					  		},
-// 					  	});
-
-//   			 }, 5000)
-//   	},
-// 	});
-  
-// };
