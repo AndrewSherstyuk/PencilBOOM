@@ -9,15 +9,16 @@ const frontendPath = "frontend/"
 var conf = {
     "vendors": {
         "css": {
-            "src": [
-                "bower_components/bootstrap/dist/css/bootstrap.min.css"
-            ]
+            "src": "",
+            "dest": ""
         },
         "js": {
-            "src": ""
+            "src": "",
+            "dest": ""
         },
         "images": {
-            "src": ""
+            "src": "",
+            "dest": ""
         }
     },
     "js": {
@@ -25,7 +26,7 @@ var conf = {
         "dest": publicPath + "js"
     },
     "css": {
-        "src": frontendPath,
+        "src": frontendPath + "css/grabber.styl",
         "dest": publicPath + "css"
     },
     "images": {
@@ -40,7 +41,8 @@ var conf = {
         "src": [
             frontendPath+ "**/*.pug",
             "!" + frontendPath + "index/*.pug",
-            "!" + frontendPath + "layout.pug"
+            "!" + frontendPath + "layout.pug",
+            "!" + frontendPath + "pages/parts/*.pug"
         ],
         "dest": publicPath
     }
@@ -49,11 +51,11 @@ var isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'developmen
 
 gulp.task('clean', () => del(publicPath));
 
-gulp.task('vendor:css', () => sc2(
-    gulp.src(conf.vendors.css.src),
-    $.concat('vendor.min.css'),
-    gulp.dest(conf.css.dest)
-));
+// gulp.task('vendor:css', () => sc2(
+//     gulp.src(conf.vendors.css.src),
+//     $.concat('vendor.min.css'),
+//     gulp.dest(conf.css.dest)
+// ));
 // gulp.task('vendor:js', () => sc2(
 //     gulp.src(conf.vendors.js.src),
 //     $.concat('vendor.min.js'),
@@ -61,7 +63,7 @@ gulp.task('vendor:css', () => sc2(
 // ));
 
 gulp.task('css', () => sc2(
-    gulp.src(conf.css.src + '**/*.styl'),
+    gulp.src(conf.css.src),
     $.stylus({
         define: {
             url: resolver()
@@ -92,15 +94,16 @@ gulp.task('html', () => sc2(
 ));
 
 gulp.task('watch', () => {
-    gulp.watch(conf.css.src + '**/*.styl', gulp.series('css'));
+    gulp.watch(frontendPath + 'css/**/*.styl', gulp.series('css'));
     gulp.watch(conf.js.src + '**/*.js', gulp.series('js'));
     gulp.watch(conf.images.src + '*.{jpg,png}', gulp.series('images'));
+    gulp.watch(frontendPath + 'pages/**/*.pug', gulp.series('html'));
 });
 
 gulp.task('development', gulp.series(
     'clean',
-    'vendor:css',
-    // 'vendor:js',
+ // 'vendor:css',
+ // 'vendor:js',
     'css',
     'js',
     'images',
