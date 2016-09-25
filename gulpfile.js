@@ -31,7 +31,7 @@ var conf = {
     },
     "images": {
         "src": frontendPath + "images",
-        "dest": publicPath + "img"
+        "dest": publicPath
     },
     "index": {
         "src": frontendPath + "index/index.pug",
@@ -79,7 +79,7 @@ gulp.task('js', () => sc2(
     gulp.dest(conf.js.dest)
 ));
 gulp.task('images', () => sc2(
-    gulp.src(conf.images.src + '*.{jpg,png}'),
+    gulp.src(conf.images.src + '**/*.*'),
     gulp.dest(conf.images.dest)
 ));
 gulp.task('index', () => sc2(
@@ -96,7 +96,7 @@ gulp.task('html', () => sc2(
 gulp.task('watch', () => {
     gulp.watch(frontendPath + 'css/**/*.styl', gulp.series('css'));
     gulp.watch(conf.js.src + '**/*.js', gulp.series('js'));
-    gulp.watch(conf.images.src + '*.{jpg,png}', gulp.series('images'));
+    gulp.watch(conf.images.src + '**/*.*', gulp.series('images'));
     gulp.watch(frontendPath + 'pages/**/*.pug', gulp.series('html'));
 });
 
