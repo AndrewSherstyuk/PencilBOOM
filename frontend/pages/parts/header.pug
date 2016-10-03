@@ -3,16 +3,19 @@
         span.top
         span.middle
         span.bottom
-    img(src="../frontend/images/logo.png" alt="logi" title="Pencil BOOM")
+    img(src="../frontend/images/logo.png" alt="pencilboom" title="Pencil BOOM")
 header
     .static-items
-        h1
-            span.pencil Pencil
-            span.boom BOOM
+        .name
+            img(src="../frontend/images/name.png" alt="pencilboom" title="Pencil BOOM")
         nav
             ul
-                li.exhibitions выставки
-                li.gifts призы
+                li.exhibitions
+                    a(href="exhibitions.html") выставки
+                li.gifts
+                    a(href="contests.html")
+                        span.small к
+                        sapn.large призам
         ul.languages
             li.active укр
             li рус

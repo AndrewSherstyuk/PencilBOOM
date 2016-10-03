@@ -1,0 +1,20 @@
+{
+  "name": "pencilboom",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Anton Lunenko <alunenko@n-ix.com>"
+  ],
+  "license": "ISC",
+  "homepage": "http://pencilboom.ho.ua",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}

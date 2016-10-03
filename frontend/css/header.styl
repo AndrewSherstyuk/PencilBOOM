@@ -18,36 +18,43 @@ $angleArrows
     content ''
     position absolute
 $angleArrowLarge
-    border-top 59px solid transparent
-    border-bottom 59px solid transparent    
+    border-top 65px solid transparent
+    border-bottom 65px solid transparent
 angleArrowLeftLarge(color)
     @extend $angleArrowLarge
-    border-left 52px solid color
+    border-left 45px solid color
 $angleArrowSmall
     border-top 53px solid transparent
     border-bottom 53px solid transparent
 angleArrowLeftSmall(color)
     @extend $angleArrowSmall
-    border-left 46px solid color
+    border-left 37px solid color
 
 .fixed-items
     position fixed
     height $headerHeight
     z-index 2
+    background-color $fixed-items-bg
+    width 125px
+    transition all .3s
     img
-        animation preloader 6s infinite linear
-        height 96%
-        position relative
+        // animation preloader 6s infinite linear
+        height 100%
+        position absolute
         float left
         border-radius 999px
-        top 2%
-        left 2%
+        left 60%
+    &.m-hamberger-hover
+        background-color white
+        .hamburger
+            span
+                background-color red
 
 header
-    padding-left 65px
+    padding-left 69px
     height $headerHeight
-    background-color $header-bg
     color white
+    box-shadow 0 0 15px black
 
 .hamburger
     margin-right 9px
@@ -59,44 +66,81 @@ header
     float left
     span
         width 100%
-        height 7px
+        height 11px
         display inline-block
         margin 0 auto
         opacity 1
         border-radius 7px
         position relative
         top 0
-        border 1px solid $hamburger-border
+        transition all .3s
         &.top
         &.middle
         &.bottom
             background-color white
+        &.top
+            top -3px
+        &.middle
+            top 2px
+        &.bottom
+            top 7px
 
 .static-items
     background-color white
-    height $header-bg
+    height $headerHeight
     position relative
     overflow hidden
-    padding-left 131px
+    padding-left 135px
     border-top-left-radius 50px
     border-bottom-left-radius 50px
-    h1
+    .name
         @extend $verticalAlignHeight
         margin 0
         position relative
-        padding-right 108px
+        padding-right 95px
         &:before
             @extend $angleArrows
             angleArrowLeftSmall(white)
             z-index 3
             top 0
-            right 6px
+            right 7px
         &:after
             @extend $angleArrows
             angleArrowLeftLarge($static-items-h1-after)
             z-index 2
-            top -6px
-            right 0
+            top -12px
+            right -2px
+        img
+            position relative
+            top 5px
+            left 3px
+    &.m-gifts-hover
+        .gifts
+            background-color white
+            a
+                color $gifts-text-hover
+            &:before
+                background-color white
+        .languages
+            &:after
+                background-color white
+    // h1
+    //     @extend $verticalAlignHeight
+    //     margin 0
+    //     position relative
+    //     padding-right 108px
+    //     &:before
+    //         @extend $angleArrows
+    //         angleArrowLeftSmall(white)
+    //         z-index 3
+    //         top 0
+    //         right 7px
+    //     &:after
+    //         @extend $angleArrows
+    //         angleArrowLeftLarge($static-items-h1-after)
+    //         z-index 2
+    //         top -6px
+    //         right 0
 
 .pencil
     color $pencil
@@ -110,78 +154,132 @@ nav
     background-color $nav-bg
     position relative
     padding-left 6px
+    transition all .3s
     &:before
         @extend $angleArrows
         angleArrowLeftLarge(white)
         z-index 1
-        top -6px
-        left -46px
+        top -12px
+        left -39px
         background-color $nav-before-bg
+        transition all .3s
     &:after
         @extend $angleArrows
-        @extend $angleArrowSmall
-        border-right 46px solid $nav-after-bg
-        z-index 2
-        top 0
-        right -52px
+        border-top 68px solid transparent
+        border-bottom 68px solid transparent
+        border-right 48px solid $nav-after-bg
+        z-index 3
+        top -15px
+        right -40px
     ul
         li
             display inline-block
+    &.m-exebitions-hover
+        background-color white
+        &:before
+            background-color white
+        .exhibitions
+            &:before
+                border-left-color white
+            a
+                color $exhibitions-text-hover
 
 .exhibitions
 .gifts
     @extend $verticalAlignHeight
 .exhibitions
-    padding 0 12px 0 30px
+    padding 0 17px 0 30px
     position relative
-    font-size 25px
+    top -2px
+    font-size 22.5px
+    white-space nowrap
+    letter-spacing 6.7px
     &:before
         @extend $angleArrows
         angleArrowLeftSmall($exhibitions-before-bg)
+        border-left 40px solid $exhibitions-before-bg
+        border-top 57px solid transparent
+        border-bottom 57px solid transparent
         z-index 3
-        top 0
-        right -46px
+        top -3px
+        right -13px
+        transition all .3s
     &:after
         @extend $angleArrows
         angleArrowLeftLarge(white)
         z-index 2
-        top -6px
-        right -52px
+        top -10px
+        right -18px
+    a
+        position relative
+        z-index 3
+        text-shadow 3px 3px 4px black
+        text-decoration none
+        color white
+        display block
+        line-height 106px
+        transition all .3s
+        &:hover
+            text-decoration none
 .gifts
-    padding 0 50px 0 100px
+    padding 0 50px 0 70px
     position relative
     background-color $gifts-bg
     text-transform uppercase
     font-size 40px
+    transition all .3s
     &:before
         @extend $angleArrows
         angleArrowLeftLarge($gifts-before)
-        top -6px
-        left 6px
+        top -13px
+        left -19px
         background-color $gifts-before-bg
+        transition all .3s
+    a
+        color white
+        text-decoration none
+        transition all .3s
+        &:hover
+            text-decoration none
+    .small
+    .large
+        text-shadow 4px 3px 5px black
+    .small
+        position relative
+        left -13px
+        font-size 23px
+        line-height 63px
+    .large
+        position relative
+        top 5px
 
 .languages
     @extend $verticalAlignHeight
     position relative
-    padding 0 13px 0 162px
+    padding 0 13px 0 55px
     background-color $languages-bg
     font-size 20px
     &:before
         @extend $angleArrows
         @extend $angleArrowLarge
-        border-right 52px solid white
-        top -6px
-        left -6px
-        background-color $languages-before-bg
+        border-right 45px solid white
+        top -12px
+        left -12px
+        z-index 2
+        border-top 65px solid transparent
+        border-bottom 65px solid transparent
     &:after
         @extend $angleArrows
         @extend $angleArrowLarge
-        border-right 52px solid $languages-after-bg
-        top -6px
-        left 0
+        border-right 47px solid $languages-after-bg
+        top -12px
+        left -22px
+        background-color $languages-before-bg
+        transition all .3s
     li
         display inline-block
         font-weight bold
+        text-shadow 4px 3px 5px black
         &:first-child
             margin-left 0
         margin-left 7px

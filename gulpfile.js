@@ -6,6 +6,7 @@ var $        = require('gulp-load-plugins')()
 
 const publicPath = "public/";
 const frontendPath = "frontend/"
+const bowerPath = "bower_components/"
 var conf = {
     "vendors": {
         "css": {
@@ -13,8 +14,9 @@ var conf = {
             "dest": ""
         },
         "js": {
-            "src": "",
-            "dest": ""
+            "src": [
+                bowerPath + "jquery/dist/jquery.min.js"
+            ]
         },
         "images": {
             "src": "",
@@ -56,11 +58,11 @@ gulp.task('clean', () => del(publicPath));
 //     $.concat('vendor.min.css'),
 //     gulp.dest(conf.css.dest)
 // ));
-// gulp.task('vendor:js', () => sc2(
-//     gulp.src(conf.vendors.js.src),
-//     $.concat('vendor.min.js'),
-//     gulp.dest(conf.js.dest)
-// ));
+gulp.task('vendor:js', () => sc2(
+    gulp.src(conf.vendors.js.src),
+    $.concat('vendor.min.js'),
+    gulp.dest(conf.js.dest)
+));
 
 gulp.task('css', () => sc2(
     gulp.src(conf.css.src),
@@ -103,7 +105,7 @@ gulp.task('watch', () => {
 gulp.task('development', gulp.series(
     'clean',
  // 'vendor:css',
- // 'vendor:js',
+    'vendor:js',
     'css',
     'js',
     'images',
