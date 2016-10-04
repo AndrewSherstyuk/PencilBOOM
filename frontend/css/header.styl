@@ -35,15 +35,16 @@ angleArrowLeftSmall(color)
     height $headerHeight
     z-index 2
     background-color $fixed-items-bg
-    width 125px
+    width 120px
     transition all .3s
+    box-shadow 0 0 15px black
     img
-        // animation preloader 6s infinite linear
+        animation preloader 6s infinite linear
         height 100%
         position absolute
         float left
         border-radius 999px
-        left 60%
+        left 70px
     &.m-hamberger-hover
         background-color white
         .hamburger
@@ -72,18 +73,20 @@ header
         opacity 1
         border-radius 7px
         position relative
-        top 0
         transition all .3s
         &.top
         &.middle
         &.bottom
             background-color white
         &.top
-            top -3px
+            top -5px
+            left 2px
         &.middle
-            top 2px
+            top 0
+            left 2px
         &.bottom
-            top 7px
+            top 5px
+            left 2px
 
 .static-items
     background-color white
@@ -119,28 +122,14 @@ header
             background-color white
             a
                 color $gifts-text-hover
+                .small
+                .large
+                    text-shadow none
             &:before
                 background-color white
         .languages
             &:after
                 background-color white
-    // h1
-    //     @extend $verticalAlignHeight
-    //     margin 0
-    //     position relative
-    //     padding-right 108px
-    //     &:before
-    //         @extend $angleArrows
-    //         angleArrowLeftSmall(white)
-    //         z-index 3
-    //         top 0
-    //         right 7px
-    //     &:after
-    //         @extend $angleArrows
-    //         angleArrowLeftLarge($static-items-h1-after)
-    //         z-index 2
-    //         top -6px
-    //         right 0
 
 .pencil
     color $pencil
@@ -183,6 +172,7 @@ nav
                 border-left-color white
             a
                 color $exhibitions-text-hover
+                text-shadow none
 
 .exhibitions
 .gifts
