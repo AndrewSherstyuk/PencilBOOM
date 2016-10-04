@@ -178,7 +178,7 @@ nav
 .gifts
     @extend $verticalAlignHeight
 .exhibitions
-    padding 0 17px 0 30px
+    padding 0 17px 0 40px
     position relative
     top -2px
     font-size 22.5px
@@ -246,18 +246,19 @@ nav
 .languages
     @extend $verticalAlignHeight
     position relative
-    padding 0 13px 0 55px
+    padding 0 0 0 40px
     background-color $languages-bg
     font-size 20px
+    width 100%
     &:before
         @extend $angleArrows
         @extend $angleArrowLarge
         border-right 45px solid white
+        border-top 65px solid transparent
+        border-bottom 65px solid transparent
         top -12px
         left -12px
         z-index 2
-        border-top 65px solid transparent
-        border-bottom 65px solid transparent
     &:after
         @extend $angleArrows
         @extend $angleArrowLarge
