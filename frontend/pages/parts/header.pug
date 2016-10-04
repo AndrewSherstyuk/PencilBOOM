@@ -2,20 +2,53 @@
     .hamburger
         span.top
         span.middle
+        span.middle2
         span.bottom
     img(src="../frontend/images/logo.png" alt="pencilboom" title="Pencil BOOM")
+    nav
+        ul
+            li
+                a(href="#!") главная
+            li
+                a(href="#!") конкурсы
+            li
+                a(href="#!") выставки
+        ul
+            li
+                a(href="#!") конкурс месяца
+            li
+                a(href="#!") выставки, ТОП-20
+            li
+                a(href="#!") полезная реклама
+        ul
+            li
+                a(href="#!") моя мастерская
+            li
+                a(href="#!") мои выставки
+            li
+                a(href="#!") мои конкурсы
+            li
+                a(href="#!") правила конкурсов
+        ul
+            li
+                a(href="#!") о нас
+            li
+                a(href="#!") помощь
+            li
+                a(href="#!") войти/регистрация
+            li
+                a(href="#!") выйти
 header
     .static-items
         .name
             img(src="../frontend/images/name.png" alt="pencilboom" title="Pencil BOOM")
-        nav
-            ul
-                li.exhibitions
-                    a(href="exhibitions.html") выставки
-                li.gifts
-                    a(href="contests.html")
-                        span.small к
-                        sapn.large призам
+        ul.top-nav
+            li.exhibitions
+                a(href="exhibitions.html") выставки
+            li.gifts
+                a(href="contests.html")
+                    span.small к
+                    sapn.large призам
         ul.languages
             li.active укр
             li рус
