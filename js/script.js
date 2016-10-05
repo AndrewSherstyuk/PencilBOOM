@@ -8,34 +8,28 @@
             $exhibitions = $('.exhibitions'),
             $nav = $('nav'),
             $staticItems = $('.static-items'),
-            $gifts = $('.gifts'),
-            $aColorBox = $('a.colorbox'),
-            aColorBoxConfig = {
-                "maxWidth": "90%",
-                "maxHeight": "90%",
-                "rel": "colorbox",
-                "retinaImage": true
-            },
-            headerHoverClasses = {
-                "hamburger": "m-hamberger-hover",
-                "exhibitions": "m-exebitions-hover",
-                "gifts": "m-gifts-hover"
-            };
+            $gifts = $('.gifts');
 
-        $hamburger.hover(
-            function () { $fixedItems.addClass(headerHoverClasses.hamburger); }
-            , function () { $fixedItems.removeClass(headerHoverClasses.hamburger); }
-        );
-
-        $exhibitions.hover(
-            function () { $nav.addClass(headerHoverClasses.exhibitions); }
-            , function () { $nav.removeClass(headerHoverClasses.exhibitions); }
-        );
-
-        $gifts.hover(
-            function () { $staticItems.addClass(headerHoverClasses.gifts); }
-            , function () { $staticItems.removeClass(headerHoverClasses.gifts); }
-        );
+        $nav.css('height', 'calc(' + $(window).outerHeight() + 'px - 106px)');
+        $hamburger.on('click', function () {
+            $hamburger.toggleClass('open');
+            $nav.toggleClass('open');
+        });
+        $hamburger.hover(function () {
+            $fixedItems.addClass('m-hamberger-hover');
+        }, function () {
+            $fixedItems.removeClass('m-hamberger-hover');
+        });
+        $exhibitions.hover(function () {
+            $nav.addClass('m-exebitions-hover');
+        }, function () {
+            $nav.removeClass('m-exebitions-hover');
+        });
+        $gifts.hover(function () {
+            $staticItems.addClass('m-gifts-hover');
+        }, function () {
+            $staticItems.removeClass('m-gifts-hover');
+        });
 
         $aColorBox.colorbox(aColorBoxConfig);
     });

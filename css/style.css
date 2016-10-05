@@ -5,7 +5,6 @@
 body, ul {
 	margin: 0;
 	padding: 0;
-	width: 100%;
 }
 h2 {
 	margin: 0;
@@ -1174,7 +1173,7 @@ ul li {
   list-style: none;
 }
 .static-items .name,
-nav,
+.top-nav,
 .exhibitions,
 .gifts,
 .languages {
@@ -1189,8 +1188,8 @@ nav,
 }
 .static-items .name:before,
 .static-items .name:after,
-nav:before,
-nav:after,
+.top-nav:before,
+.top-nav:after,
 .exhibitions:before,
 .exhibitions:after,
 .gifts:before,
@@ -1202,7 +1201,7 @@ nav:after,
   position: absolute;
 }
 .static-items .name:after,
-nav:before,
+.top-nav:before,
 .exhibitions:after,
 .gifts:before,
 .languages:before,
@@ -1218,7 +1217,7 @@ nav:before,
 .fixed-items {
   position: fixed;
   height: 106px;
-  z-index: 2;
+  z-index: 70;
   background-color: #db0022;
   width: 120px;
   transition: all 0.3s;
@@ -1243,7 +1242,6 @@ header {
   height: 106px;
   color: #fff;
   box-shadow: 0 0 15px #000;
-  position: relative;
 }
 .hamburger {
   margin-right: 9px;
@@ -1266,6 +1264,7 @@ header {
 }
 .hamburger span.top,
 .hamburger span.middle,
+.hamburger span.middle2,
 .hamburger span.bottom {
   background-color: #fff;
 }
@@ -1277,9 +1276,25 @@ header {
   top: 0;
   left: 2px;
 }
+.hamburger span.middle2 {
+  width: 48px;
+  position: absolute;
+  top: 21px;
+  left: 10px;
+}
 .hamburger span.bottom {
   top: 5px;
   left: 2px;
+}
+.hamburger.open .top,
+.hamburger.open .bottom {
+  opacity: 0;
+}
+.hamburger.open .middle {
+  transform: rotate(45deg);
+}
+.hamburger.open .middle2 {
+  transform: rotate(-45deg);
 }
 .static-items {
   background-color: #fff;
@@ -1336,13 +1351,13 @@ header {
   position: relative;
   z-index: 1;
 }
-nav {
+.top-nav {
   background-color: #430062;
   position: relative;
   padding-left: 6px;
   transition: all 0.3s;
 }
-nav:before {
+.top-nav:before {
   border-left: 45px solid #fff;
   z-index: 1;
   top: -12px;
@@ -1350,7 +1365,7 @@ nav:before {
   background-color: #430062;
   transition: all 0.3s;
 }
-nav:after {
+.top-nav:after {
   border-top: 68px solid transparent;
   border-bottom: 68px solid transparent;
   border-right: 48px solid #430062;
@@ -1358,24 +1373,24 @@ nav:after {
   top: -15px;
   right: -40px;
 }
-nav ul li {
+.top-nav ul li {
   display: inline-block;
 }
-nav.m-exebitions-hover {
+.top-nav.m-exebitions-hover {
   background-color: #fff;
 }
-nav.m-exebitions-hover:before {
+.top-nav.m-exebitions-hover:before {
   background-color: #fff;
 }
-nav.m-exebitions-hover .exhibitions:before {
+.top-nav.m-exebitions-hover .exhibitions:before {
   border-left-color: #fff;
 }
-nav.m-exebitions-hover .exhibitions a {
+.top-nav.m-exebitions-hover .exhibitions a {
   color: #430062;
   text-shadow: none;
 }
 .exhibitions {
-  padding: 0 17px 0 30px;
+  padding: 0 17px 0 40px;
   position: relative;
   top: -2px;
   font-size: 22.5px;
@@ -1450,17 +1465,18 @@ nav.m-exebitions-hover .exhibitions a {
 }
 .languages {
   position: relative;
-  padding: 0 13px 0 55px;
+  padding: 0 0 0 40px;
   background-color: #430062;
   font-size: 20px;
+  width: 100%;
 }
 .languages:before {
   border-right: 45px solid #fff;
+  border-top: 65px solid transparent;
+  border-bottom: 65px solid transparent;
   top: -12px;
   left: -12px;
   z-index: 2;
-  border-top: 65px solid transparent;
-  border-bottom: 65px solid transparent;
 }
 .languages:after {
   border-right: 47px solid #430062;
@@ -1480,6 +1496,38 @@ nav.m-exebitions-hover .exhibitions a {
 }
 .languages li.active {
   color: #db0022;
+}
+nav {
+  width: 245px;
+  position: absolute;
+  top: 106px;
+  left: -245px;
+  transition: all 0.3s;
+  background-color: #430062;
+}
+nav.open {
+  left: 0;
+}
+nav ul {
+  padding: 46px 0 46px 38px;
+  border-top: 1px solid #dcabf1;
+  box-sizing: border-box;
+}
+nav ul:first-child {
+  border-top: 0 none;
+}
+nav ul li {
+  margin-top: 30px;
+}
+nav ul li:first-child {
+  margin-top: 0;
+}
+nav ul li a {
+  color: #dcabf1;
+  text-decoration: none;
+}
+nav ul li a:hover {
+  text-decoration: none;
 }
 @-moz-keyframes preloader {
   to {
