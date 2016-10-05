@@ -8,24 +8,32 @@
         , $exhibitions = $('.exhibitions')
         , $nav = $('nav')
         , $staticItems = $('.static-items')
-        , $gifts = $('.gifts');
+        , $gifts = $('.gifts')
+        , styleClasses = {
+            "hamburger": {
+                "hover": "m-hamberger-hover",
+                "click": "open"
+            },
+            "exhibitions": "m-exebitions-hover",
+            "gifts": "m-gifts-hover"
+        };
 
         $nav.css('height', `calc(${$(window).outerHeight()}px - 106px)`);
         $hamburger.on('click', () => {
-            $hamburger.toggleClass('open');
-            $nav.toggleClass('open');
+            $hamburger.toggleClass(styleClasses.hamburger.click);
+            $nav.toggleClass(styleClasses.hamburger.click);
         });
         $hamburger.hover(
-            () => { $fixedItems.addClass('m-hamberger-hover'); }
-            , () => { $fixedItems.removeClass('m-hamberger-hover'); }
+            () => { $fixedItems.addClass(styleClasses.hamburger.hover); }
+            , () => { $fixedItems.removeClass(styleClasses.hamburger.hover); }
         );
         $exhibitions.hover(
-            () => { $nav.addClass('m-exebitions-hover'); }
-            , () => { $nav.removeClass('m-exebitions-hover'); }
+            () => { $staticItems.addClass(styleClasses.exhibitions); }
+            , () => { $staticItems.removeClass(styleClasses.exhibitions); }
         );
         $gifts.hover(
-            () => { $staticItems.addClass('m-gifts-hover'); }
-            , () => { $staticItems.removeClass('m-gifts-hover'); }
+            () => { $staticItems.addClass(styleClasses.gifts); }
+            , () => { $staticItems.removeClass(styleClasses.gifts); }
         );
     });
 })();
