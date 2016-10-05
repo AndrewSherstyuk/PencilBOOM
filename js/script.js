@@ -8,27 +8,47 @@
             $exhibitions = $('.exhibitions'),
             $nav = $('nav'),
             $staticItems = $('.static-items'),
-            $gifts = $('.gifts');
+            $gifts = $('.gifts'),
+            styleClasses = {
+                "hamburger": {
+                    "hover": "m-hamberger-hover",
+                    "click": "open"
+                },
+                "exhibitions": "m-exebitions-hover",
+                "gifts": "m-gifts-hover"
+            },
+            $aColorBox = $('a.colorbox'),
+            aColorBoxConfig = {
+                "maxWidth": "90%",
+                "maxHeight": "90%",
+                "rel": "colorbox",
+                "retinaImage": true
+            },
+            headerHoverClasses = {
+                "hamburger": "m-hamberger-hover",
+                "exhibitions": "m-exebitions-hover",
+                "gifts": "m-gifts-hover"
+             };
 
         $nav.css('height', 'calc(' + $(window).outerHeight() + 'px - 106px)');
         $hamburger.on('click', function () {
-            $hamburger.toggleClass('open');
-            $nav.toggleClass('open');
+            $hamburger.toggleClass(styleClasses.hamburger.click);
+            $nav.toggleClass(styleClasses.hamburger.click);
         });
         $hamburger.hover(function () {
-            $fixedItems.addClass('m-hamberger-hover');
+            $fixedItems.addClass(styleClasses.hamburger.hover);
         }, function () {
-            $fixedItems.removeClass('m-hamberger-hover');
+            $fixedItems.removeClass(styleClasses.hamburger.hover);
         });
         $exhibitions.hover(function () {
-            $nav.addClass('m-exebitions-hover');
+            $staticItems.addClass(styleClasses.exhibitions);
         }, function () {
-            $nav.removeClass('m-exebitions-hover');
+            $staticItems.removeClass(styleClasses.exhibitions);
         });
         $gifts.hover(function () {
-            $staticItems.addClass('m-gifts-hover');
+            $staticItems.addClass(styleClasses.gifts);
         }, function () {
-            $staticItems.removeClass('m-gifts-hover');
+            $staticItems.removeClass(styleClasses.gifts);
         });
 
         $aColorBox.colorbox(aColorBoxConfig);
