@@ -5,11 +5,18 @@
         <meta charset="utf-8">
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="css/colorbox.css">
+        <link rel="stylesheet" type="text/css" href="css/chosen.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body class="body">
         <div class="fixed-items">
-            <div class="hamburger"><span class="top"></span><span class="middle"></span><span class="middle2"></span><span class="bottom"></span></div><img src="images/logo.png" alt="pencilboom" title="Pencil BOOM">
+            <div class="hamburger">
+                <span class="top"></span>
+                <span class="middle"></span>
+                <span class="middle2"></span>
+                <span class="bottom"></span>
+            </div>
+            <img src="images/logo.png" alt="pencilboom" title="Pencil BOOM">
             <nav>
                 <ul>
                     <li><a href="#!">главная</a></li>
@@ -37,10 +44,18 @@
         </div>
         <header>
             <div class="static-items">
-                <div class="name"><img src="images/name.png" alt="pencilboom" title="Pencil BOOM"></div>
+                <div class="name">
+                    <img src="images/name.png" alt="pencilboom" title="Pencil BOOM">
+                </div>
                 <ul class="top-nav">
-                    <li class="exhibitions"><a href="exhibitions.html">выставки</a></li>
-                    <li class="gifts"><a href="contests.html"><span class="small">к</span><sapn class="large">призам</sapn></a></li>
+                    <li class="exhibitions">
+                        <a href="exhibitions.html">выставки</a>
+                    </li>
+                    <li class="gifts">
+                        <a href="contests.html">
+                            <span class="small">к</span><sapn class="large">призам</sapn>
+                        </a>
+                    </li>
                 </ul>
                 <ul class="languages">
                     <li class="active">укр</li>
@@ -48,12 +63,62 @@
                 </ul>
             </div>
         </header>
-
-        <div id="tagline">
-            <div class="slogan">Смени карандаш</div>
+        <div class="content">
+            <div class="filter-wrapper clearfix">
+                <h1>Гениариум</h1>
+                <div class="width50">
+                    <div class="filter clearfix">
+                        <label class="filter-genre">жанр</label>
+                        <select id="filter-genre">
+                            <option>все</option>
+                            <option>рисунок</option>
+                            <option>лепка</option>
+                            <option>апликация</option>
+                            <option>поделка</option>
+                            <option>фотография</option>
+                            <option>скрапбукинг</option>
+                        </select>
+                    </div>
+                    <div class="filter clearfix">
+                        <label class="filter-age">возраст</label>
+                        <select id="filter-age">
+                            <option>все</option>
+                            <option>4-7 лет</option>
+                            <option>8-12 лет</option>
+                            <option>старше 12 лет</option>
+                            <option>взрослые</option>
+                        </select>
+                    </div>
+                    <div class="filter clearfix">
+                        <label class="filter-theme-search">тема</label>
+                        <input id="filter-theme-search" type="text" placeholder="Поиск">
+                        <span></span>
+                    </div>
+                    <div class="filter clearfix">
+                        <label class="filter-gifts">все призы</label>
+                        <select id="filter-gifts">
+                            <option>IPhone 6S</option>
+                            <option>Meizu M3 Note</option>
+                            <option>Xiaomi Redmi 3</option>
+                            <option>Samsung Galaxy</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="width50">
+                    <div id="goldfish_block">
+                        <img id="border_goldfish" src="images/border_for_goldfish.png">
+                        <img id="goldfish" class="fishes" src="images/goldfish.png">
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id="filter">
+        <!--
+        <div id="tagline">
+            <div class="slogan">Смени карандаш</div>
+        </div> -->
+
+        <!-- <div id="filter">
             <div class="content">
 
                 <div id="filter_block">
@@ -109,7 +174,7 @@
                     <img id="goldfish" class="fishes" src="images/goldfish.png">
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div id="gallery" class="gallery">
             <div id="block_1" class=" gallery_block">
@@ -417,6 +482,7 @@
 
         <script type="text/javascript" src="js/jquery-3.1.0.js"></script>
         <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+        <script type="text/javascript" src="js/chosen.jquery.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>

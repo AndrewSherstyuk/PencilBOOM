@@ -28,7 +28,10 @@
                 "hamburger": "m-hamberger-hover",
                 "exhibitions": "m-exebitions-hover",
                 "gifts": "m-gifts-hover"
-             };
+            },
+            choosenConfig = {
+                "disable_search": true
+            };
 
         $nav.css('height', 'calc(' + $(window).outerHeight() + 'px - 106px)');
         $hamburger.on('click', function () {
@@ -52,6 +55,8 @@
         });
 
         $aColorBox.colorbox(aColorBoxConfig);
+
+        $("#filter-genre, #filter-age, #filter-gifts").chosen(choosenConfig);
     });
 })();
 
