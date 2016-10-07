@@ -16,6 +16,9 @@
             },
             "exhibitions": "m-exebitions-hover",
             "gifts": "m-gifts-hover"
+        }
+        , choosenConfig = {
+            "disable_search": true
         };
 
         $nav.css('height', `calc(${$(window).outerHeight()}px - 106px)`);
@@ -35,5 +38,6 @@
             () => { $staticItems.addClass(styleClasses.gifts); }
             , () => { $staticItems.removeClass(styleClasses.gifts); }
         );
+        $("#filter-genre, #filter-age, #filter-gifts").chosen(choosenConfig);
     });
 })();

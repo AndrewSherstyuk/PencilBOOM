@@ -2,6 +2,11 @@ $color1  = #db0022
 $color2  = #430062
 $color3  = #e500ff
 $color4  = #dcabf1
+$color5  = #e500ff
+$color6  = #7d1dcc
+$color7  = #262626
+$color8  = #acacac
+$color9  = #cebdd6
 
 $fixed-items-bg = $color1
 $static-items-h1-after = $color2
@@ -25,6 +30,20 @@ $languages-bg = $color2
 $languages-before-bg = $color1
 $languages-after-bg = $color2
 $languages-active = $color1
+$filter-genre-bg = $color5
+$filter-genre-text-color = $color5
+$filter-genre-drop = $color5
+$filter-genre-drop-text-color = $color5
+$filter-genre-item-border = $color9
+$filter-age-bg = $color6
+$filter-age-text-color = $color6
+$filter-age-drop = $color6
+$filter-theme-search-bg = $color2
+$filter-theme-search-text-color = $color8
+$filter-gifts-bg = $color1
+$filter-gifts-text-color = $color1
+$filter-gifts-drop = $color1
+$filter-border = $color7
 
 body
 ul
@@ -37,6 +56,15 @@ ul
     padding 0
     li
         list-style none
+
+.clearfix
+    &:after
+        content ''
+        display table
+        clear both
+.width50
+    width 50%
+    float left
 
 // .content
 //     background-image url(../images/main-bg.png)

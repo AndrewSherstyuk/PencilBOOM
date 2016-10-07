@@ -1,0 +1,156 @@
+filter-bg(color)
+    padding 2px 0 8px 23px
+    display inline-block
+    width 209px
+    border 1px solid $filter-border
+    border-right none
+    border-top-left-radius 3px
+    border-bottom-left-radius 3px
+    font-size 21px
+    color white
+    text-shadow 4px 4px 6px black
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff75f5+82,ffffff+82,ffffff+84,ff75f5+84,ff75f5+85,ff75f5+88,ffffff+88 */
+    /* Old browsers */
+    background #ff75f5
+    /* FF3.6-15 */
+    background -moz-linear-gradient(-45deg, color 84%, #ffffff 84%, #ffffff 85.5%, color 85.5%, color 85.5%, color 89.5%, #ffffff 89.5%)
+    /* Chrome10-25,Safari5.1-6 */
+    background -webkit-linear-gradient(-45deg,  color 84%, #ffffff 84%, #ffffff 85.5%, color 85.5%, color 85.5%, color 89.5%, #ffffff 89.5%)
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background linear-gradient(125deg, color 84%, #ffffff 84%, #ffffff 85.5%, color 85.5%, color 85.5%, color 89.5%, #ffffff 89.5%)
+    /* IE6-9 fallback on horizontal gradient */
+    filter unquote('progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff75f5", endColorstr="#ffffff",GradientType=1 )')
+$filter
+    width 0
+    height 0
+    position relative
+    top calc(50% - 3px)
+    transition all .3s
+select-triangle-closed(color)
+    @extend $filter
+    border-left 7px solid transparent
+    border-right 6px solid transparent
+    border-top 11px solid color
+select-triangle-open(color)
+    // @extend $filter
+    // border-top 0 none
+    // border-left 7px solid transparent
+    // border-right 6px solid transparent
+    // border-bottom 11px solid color
+    transform rotate(180deg)
+.filter-wrapper
+    width 1010px
+    margin 0 auto
+.filter
+    margin-top 22px
+    height 41px
+    box-shadow 3px 3px 6px black
+    display inline-block
+    min-width 414px
+    border-radius 3px
+    position relative
+    &:first-child
+        margin-top 0
+
+.filter-genre
+    filter-bg($filter-genre-bg)
+#filter-genre + .chosen-container-single .chosen-single span
+    color $filter-genre-text-color
+#filter-genre + .chosen-container .chosen-single div b
+    select-triangle-closed($filter-genre-drop)
+#filter-genre + .chosen-container.chosen-container-active .chosen-single div b
+    select-triangle-open($filter-genre-drop)
+#filter-genre + .chosen-container .chosen-drop .chosen-results li
+    color $filter-genre-drop-text-color
+
+.filter-age
+    filter-bg($filter-age-bg)
+#filter-age + .chosen-container-single .chosen-single span
+    color $filter-age-text-color
+#filter-age + .chosen-container .chosen-single div b
+    select-triangle-closed($filter-age-drop)
+#filter-age + .chosen-container.chosen-container-active .chosen-single div b
+    select-triangle-open($filter-age-drop)
+#filter-age + .chosen-container .chosen-drop .chosen-results li
+    color $filter-age-drop
+
+.filter-theme-search
+    filter-bg($filter-theme-search-bg)
+    float left
+    position relative
+.filter-theme-search + input
+    padding 0
+    padding-right 38px
+    width 142px
+    height 40px
+    display inline-block
+    border 1px solid #262626
+    border-left 0 none
+    color $filter-theme-search-text-color
+    font-size 21px
+    font-family 'Arial Black'
+    float left
+    border-top-right-radius 3px
+    border-bottom-right-radius 3px
+    outline none
+.filter-theme-search + input + span
+    display block
+    width 26px
+    height 26px
+    position absolute
+    top 8px
+    right 8px
+    background-image url(chosen-sprite@2x.png)
+    background-position 36px 26px
+
+.filter-gifts
+    filter-bg($filter-gifts-bg)
+#filter-gifts + .chosen-container-single .chosen-single span
+    color $filter-gifts-text-color
+#filter-gifts + .chosen-container .chosen-single div b
+    select-triangle-closed($filter-gifts-drop)
+#filter-gifts + .chosen-container.chosen-container-active .chosen-single div b
+    select-triangle-open($filter-gifts-drop)
+#filter-gifts + .chosen-container .chosen-drop .chosen-results li
+    color $filter-gifts-drop
+
+/* chosen revrite */
+.chosen-container
+    width 173px !important
+    border 1px solid $filter-border
+    border-left 0 none
+    border-top-right-radius 3px
+    border-bottom-right-radius 3px
+    padding 9px 7px 6px 0
+    top -1px
+    &.chosen-container-active
+        border-bottom-right-radius 0
+        .chosen-drop
+            width 203px
+            left -21px
+            border 1px solid black
+            border-top 0 none
+.chosen-container .chosen-drop
+    border 0 none
+.chosen-container .chosen-drop .chosen-results
+    margin 0
+    padding 0
+    max-height none
+.chosen-container .chosen-drop .chosen-results li
+    border-top 1px solid $filter-genre-item-border
+    height 41px
+    line-height 30px
+.chosen-container-single .chosen-single
+    padding 0
+    border 0 none
+    background transparent
+    box-shadow none
+    top -3px
+.chosen-container-single .chosen-single span
+    font-size 20px
+.chosen-container-active.chosen-with-drop .chosen-single
+    border 0 none
+    background transparent
+    box-shadow none
+.chosen-container-single .chosen-drop
+    margin-top 0

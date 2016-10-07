@@ -10,17 +10,18 @@ const bowerPath = "bower_components/"
 var conf = {
     "vendors": {
         "css": {
-            "src": "",
+            "src": bowerPath + "chosen/chosen.css",
             "dest": ""
         },
         "js": {
             "src": [
-                bowerPath + "jquery/dist/jquery.min.js"
+                bowerPath + "jquery/dist/jquery.min.js",
+                bowerPath + "chosen/chosen.jquery.js"
             ]
         },
         "images": {
-            "src": "",
-            "dest": ""
+            "src": bowerPath + "chosen/*.png",
+            "dest": publicPath + "css"
         }
     },
     "js": {
@@ -53,15 +54,19 @@ var isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'developmen
 
 gulp.task('clean', () => del(publicPath));
 
-// gulp.task('vendor:css', () => sc2(
-//     gulp.src(conf.vendors.css.src),
-//     $.concat('vendor.min.css'),
-//     gulp.dest(conf.css.dest)
-// ));
+gulp.task('vendor:css', () => sc2(
+    gulp.src(conf.vendors.css.src),
+    $.concat('vendor.min.css'),
+    gulp.dest(conf.css.dest)
+));
 gulp.task('vendor:js', () => sc2(
     gulp.src(conf.vendors.js.src),
     $.concat('vendor.min.js'),
     gulp.dest(conf.js.dest)
+));
+gulp.task('vendor:images', () => sc2(
+    gulp.src(conf.vendors.images.src),
+    gulp.dest(conf.vendors.images.dest)
 ));
 
 gulp.task('css', () => sc2(
@@ -104,8 +109,9 @@ gulp.task('watch', () => {
 
 gulp.task('development', gulp.series(
     'clean',
- // 'vendor:css',
+    'vendor:css',
     'vendor:js',
+    'vendor:images',
     'css',
     'js',
     'images',

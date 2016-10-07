@@ -5,7 +5,40 @@ block title
 
 block content
     .content
-        h1 index page
+        .filter-wrapper.clearfix
+            h1 Гениариум
+            .width50
+                .filter
+                    label.filter-genre жанр
+                    select#filter-genre
+                        option все
+                        option рисунок
+                        option лепка
+                        option апликация
+                        option поделка
+                        option фотография
+                        option скрапбукинг
+                .filter
+                    label.filter-age возраст
+                    select#filter-age
+                        option все
+                        option 4-7 лет
+                        option 8-12 лет
+                        option старше 12 лет
+                        option взрослые
+                .filter.clearfix
+                    label.filter-theme-search тема
+                    input#filter-theme-search(type="text" placeholder="Поиск")
+                    span
+                .filter
+                    label.filter-gifts все призы
+                    select#filter-gifts
+                        option IPhone 6S
+                        option Meizu M3 Note
+                        option Xiaomi Redmi 3
+                        option Samsung Galaxy
+            .width50
+                .gold-fish gold fish
         h1 index page
         h1 index page
         h1 index page
