@@ -52,6 +52,7 @@ angleArrowLeftSmall(color)
                 background-color $hamburger-hover-bg
 
 header
+    margin-bottom 95px
     padding-left 69px
     height $headerHeight
     color white
@@ -205,8 +206,8 @@ header
         @extend $angleArrows
         angleArrowLeftSmall($exhibitions-before-bg)
         border-left 40px solid $exhibitions-before-bg
-        border-top 57px solid transparent
-        border-bottom 57px solid transparent
+        border-top 58px solid transparent
+        border-bottom 58px solid transparent
         z-index 3
         top -3px
         right -13px
@@ -263,7 +264,7 @@ header
 .languages
     @extend $verticalAlignHeight
     position relative
-    padding 0 0 0 40px
+    padding 0 0 0 23px
     background-color $languages-bg
     font-size 20px
     width 100%
@@ -290,6 +291,8 @@ header
         text-shadow 4px 3px 5px black
         &:first-child
             margin-left 0
+            position relative
+            z-index 3
         margin-left 7px
         &.active
             color $languages-active

@@ -34,7 +34,7 @@ var conf = {
     },
     "images": {
         "src": frontendPath + "images",
-        "dest": publicPath
+        "dest": publicPath + "images"
     },
     "index": {
         "src": frontendPath + "index/index.pug",
@@ -86,7 +86,7 @@ gulp.task('js', () => sc2(
     gulp.dest(conf.js.dest)
 ));
 gulp.task('images', () => sc2(
-    gulp.src(conf.images.src + '**/*.*'),
+    gulp.src(conf.images.src + '/**/*.*'),
     gulp.dest(conf.images.dest)
 ));
 gulp.task('index', () => sc2(
