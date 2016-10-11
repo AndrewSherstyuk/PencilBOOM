@@ -295,15 +295,6 @@ h2 {
 
 }
 
-#goldfish_block {
-  display: inline-block;
-  /*margin-left: 75px;  */
-  float: right;
-  position: relative;
-  overflow: hidden;
-
-}
-
 /*//////////////////////////fishes*/
 .gallery .fishes {
   position: absolute;
@@ -316,13 +307,6 @@ h2 {
   overflow: hidden;
  }
 */
-
-#goldfish {
-  top: 56px;
-  left: -352px;
-  position: absolute;
-  z-index: -1;
-}
 
 #gallery img#fish_1_1, 
 #gallery img#fish_1 {
@@ -1177,6 +1161,14 @@ ul li {
   display: table;
   clear: both;
 }
+.content-block {
+  width: 1010px;
+  margin: 0 auto;
+}
+.content-block >h1 {
+  margin: 0;
+  margin-bottom: 50px;
+}
 .width50 {
   width: 50%;
   float: left;
@@ -1226,7 +1218,7 @@ ul li {
 .fixed-items {
   position: fixed;
   height: 106px;
-  z-index: 70;
+  z-index: 2;
   background-color: #db0022;
   width: 120px;
   transition: all 0.3s;
@@ -1247,11 +1239,11 @@ ul li {
   background-color: #db0022;
 }
 header {
+  margin-bottom: 95px;
   padding-left: 69px;
   height: 106px;
   color: #fff;
   box-shadow: 0 0 15px #000;
-  position: relative;
 }
 .hamburger {
   margin-right: 9px;
@@ -1318,7 +1310,7 @@ header {
 .static-items .name {
   margin: 0;
   position: relative;
-  z-index: 70;
+  z-index: 2;
   padding-right: 95px;
 }
 .static-items .name:before {
@@ -1415,8 +1407,8 @@ header {
 .exhibitions:before {
   border-left: 37px solid #430062;
   border-left: 40px solid #430062;
-  border-top: 57px solid transparent;
-  border-bottom: 57px solid transparent;
+  border-top: 58px solid transparent;
+  border-bottom: 58px solid transparent;
   z-index: 3;
   top: -3px;
   right: -13px;
@@ -1480,7 +1472,7 @@ header {
 }
 .languages {
   position: relative;
-  padding: 0 0 0 40px;
+  padding: 0 0 0 23px;
   background-color: #430062;
   font-size: 20px;
   width: 100%;
@@ -1508,6 +1500,8 @@ header {
 }
 .languages li:first-child {
   margin-left: 0;
+  position: relative;
+  z-index: 3;
 }
 .languages li.active {
   color: #db0022;
@@ -1584,9 +1578,12 @@ nav ul li a:hover {
   top: calc(50% - 3px);
   transition: all 0.3s;
 }
+.filters {
+  margin-bottom: 50px;
+}
 .filter-wrapper {
-  width: 1010px;
-  margin: 0 auto;
+  margin-left: 50px;
+  width: calc(50% - 50px);
 }
 .filter {
   margin-top: 22px;
@@ -1601,9 +1598,7 @@ nav ul li a:hover {
   margin-top: 0;
 }
 .filter-genre {
-  /**/
   float: left;
-  /**/
   padding: 2px 0 8px 23px;
   display: inline-block;
   width: 209px;
@@ -1641,9 +1636,7 @@ nav ul li a:hover {
   color: #e500ff;
 }
 .filter-age {
-  /**/
   float: left;
-  /**/
   padding: 2px 0 8px 23px;
   display: inline-block;
   width: 209px;
@@ -1732,9 +1725,7 @@ nav ul li a:hover {
   background-position: 36px 26px;
 }
 .filter-gifts {
-  /**/
   float: left;
-  /**/
   padding: 2px 0 8px 23px;
   display: inline-block;
   width: 209px;
@@ -1772,15 +1763,14 @@ nav ul li a:hover {
   color: #db0022;
 }
 .chosen-container {
-  /**/
-  float: left;
-  /**/
   width: 173px !important;
   border: 1px solid #262626;
   border-left: 0 none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   padding: 9px 7px 6px 0;
+  top: 0;
+  background-color: #fff;
 }
 .chosen-container.chosen-container-active {
   border-bottom-right-radius: 0;
@@ -1821,4 +1811,17 @@ nav ul li a:hover {
 }
 .chosen-container-single .chosen-drop {
   margin-top: 0;
+}
+#fish_1_wrapper {
+  position: absolute;
+  overflow: hidden;
+}
+#fish_1 {
+  position: relative;
+  right: -100%;
+}
+#goldfish_block {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
 }

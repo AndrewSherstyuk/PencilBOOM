@@ -24,14 +24,21 @@
                 "rel": "colorbox",
                 "retinaImage": true
             },
-            headerHoverClasses = {
-                "hamburger": "m-hamberger-hover",
-                "exhibitions": "m-exebitions-hover",
-                "gifts": "m-gifts-hover"
-            },
             choosenConfig = {
                 "disable_search": true
-            };
+            },
+            $fish_1_wrapper = $('#fish_1_wrapper'),
+            $border_1 = $("#border_1"),
+            $border_1_offset = null,
+            $windowOuterWidth = $(window).outerWidth(),
+            $fish_1_wrapperCss = null;
+
+        $border_1_offset = $border_1.offset();
+        $fish_1_wrapperCss = {
+            "top": $border_1_offset.top + ($border_1.outerHeight() - $fish_1_wrapper.height()) / 2 + 'px',
+            "left": $windowOuterWidth - $border_1_offset.left + 16 + 'px',
+            "width": $windowOuterWidth - $border_1_offset.left + 'px'
+        };
 
         $nav.css('height', 'calc(' + $(window).outerHeight() + 'px - 106px)');
         $hamburger.on('click', function () {
@@ -57,11 +64,14 @@
         $aColorBox.colorbox(aColorBoxConfig);
 
         $("#filter-genre, #filter-age, #filter-gifts").chosen(choosenConfig);
+
+        $fish_1_wrapper.css($fish_1_wrapperCss);
+        fish_1("#fish_1_wrapper");
     });
 })();
 
 window.onload=function() {
-    doubleFishLeft("#fish_1", "#fish_1_1", "#grid_img-7", "#grid_img-13");
+    doubleFishLeft("#fish_1_1", "#grid_img-7", "#grid_img-13");
     doubleFishRight("#fish_2", "#fish_2_2", "#grid_img-6");
     doubleFishRight("#fish_3", "#fish_3_3", "#grid_img-19");
     doubleFishLeft("#fish_4", "#fish_4_4", "#grid_img-21", "#grid_img-22");
@@ -71,7 +81,6 @@ window.onload=function() {
     doubleFishRight("#fish_8", "#fish_8_8", "#grid_img-63");
     doubleFishRight("#fish_9", "#fish_9_9", "#grid_img-38");
     doubleFishLeft("#fish_10", "#fish_10_10", "#grid_img-66", "#grid_img-68");
-    goldfish("#border_goldfish");
     doubleBigFishLeft("#dolphin", "#dolphin2");
     doubleBigFishRight("#submarine", "#submarine2");
 };
@@ -211,40 +220,47 @@ function doubleFishLeft(first_fish, second_fish, leftimage, rightimage) {
     },
     });
 };
-function goldfish(stopPoint) {
-    // element = document.querySelector(stopPoint);
-    // var stoppoint = element.getBoundingClientRect().left;
-    // stoppoint = stoppoint + 50 + 'px';
-    $("#goldfish").animate({
-        left: '55px'
-    }, 
-    {
-    duration: 10000,
-    easing: "swing",
-    complete : function() {
-         
-            setTimeout(function() {
+function fish_1(selector) {
+    var verticalBorderWidth = 20,
+        border_1_width = $('#border_1').outerWidth(),
+        $fish_1 = $('#fish_1'),
+        fish_1_width = null,
+        stopPoint = null,
+        points = null,
+        animationDuration = 10000,
+        pauseTimeAnimation = 5000,
+        easingType = {
+        "swing": 'swing',
+        "linear": 'linear'
+    };
 
-                    $("#goldfish").animate({
-                                left: "100%"
-                        }, 
-                        {
-                            duration: 10000,
-                            easing: "linear",
-                            complete : function() {
-                                $(this).css({left: -352 });
-                                
+    fish_1_width = $fish_1.outerWidth();
+    stopPoint = ((border_1_width - fish_1_width) / 2 - verticalBorderWidth) * -1;
+    points = {
+        "start": "-100%",
+        "stop": stopPoint + 'px',
+        "out": fish_1_width + 'px'
+    };
 
-                                setTimeout(function() {
-                                goldfish(stopPoint);
-                            }, 1)
-                            },
-                        });
-
-             }, 5000)
-    },
+    $fish_1.animate({ "right": points.stop }, {
+        "duration": animationDuration,
+        "easing": easingType.swing,
+        "complete": function complete() {
+            setTimeout(function () {
+                $fish_1.animate({ 'right': points.out }, {
+                    "duration": animationDuration,
+                    "easing": easingType.linear,
+                    "complete": function complete() {
+                        $fish_1.css({ 'right': points.start });
+                        setTimeout(function () {
+                            fish_1(selector);
+                        }, 1);
+                    }
+                });
+            }, pauseTimeAnimation);
+        }
     });
-};
+}
 function doubleBigFishLeft(first_fish, second_fish) {
     stoppoint = $(first_fish).width();
     stoppoint = $(window).width()/2 - stoppoint/2 + "px";
@@ -368,38 +384,6 @@ function doubleBigFishRight(first_fish, second_fish) {
             });
 
      }, 5000)
-    },
-    });
-};
-function fish_move(to, persent, to2, value) {
-
-    $("#fish_1").animate({
-            to: persent
-    }, 
-    {
-    duration: 9000,
-    easing: "swing",
-    complete : function() {
-         
-            setTimeout(function() {
-
-                    $("#fish_1").animate({
-                                left: "100%"
-                        }, 
-                        {
-                            duration: 5000,
-                            easing: "linear",
-                            complete : function() {
-                                $(this).css({to2: value });
-                                
-
-                                setTimeout(function() {
-                                fish_1();
-                            }, 1)
-                            },
-                        });
-
-             }, 5000)
     },
     });
 };
