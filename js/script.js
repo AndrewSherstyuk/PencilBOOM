@@ -71,7 +71,7 @@
 })();
 
 window.onload=function() {
-    doubleFishLeft("#fish_1_1", "#grid_img-7", "#grid_img-13");
+    doubleFishLeft("#fish_0", "#fish_1_1", "#grid_img-7", "#grid_img-13");
     doubleFishRight("#fish_2", "#fish_2_2", "#grid_img-6");
     doubleFishRight("#fish_3", "#fish_3_3", "#grid_img-19");
     doubleFishLeft("#fish_4", "#fish_4_4", "#grid_img-21", "#grid_img-22");
