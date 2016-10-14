@@ -40,10 +40,22 @@ select-triangle-open(color)
     transform rotate(180deg)
 .filters
     margin-bottom 50px
+    h1
+        margin 0
+        margin-bottom 12px
+        font-family 'brasileiro_onemedium'
+        font-size 60px
+        font-weight 100
+        color $filter-h1-color
+        letter-spacing 6px
 .filter-wrapper
-    margin-left 50px
     width calc(50% - 50px)
+    float left
+.filter-wrapper+.width50
+    float right
+    text-align right
 .filter
+    margin-left 44px
     margin-top 22px
     height 41px
     box-shadow 3px 3px 6px black
@@ -53,6 +65,18 @@ select-triangle-open(color)
     position relative
     &:first-child
         margin-top 0
+
+.fishnet
+    display block
+    width 85%
+    height 85%
+    position absolute
+    z-index -1
+    top 5%
+    left 5%
+    background-color white
+    background-image url(../images/fishnet.png)
+    background-position 50%
 
 .filter-genre
     filter-bg($filter-genre-bg)

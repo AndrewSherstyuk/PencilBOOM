@@ -7,6 +7,8 @@ $color6  = #7d1dcc
 $color7  = #262626
 $color8  = #acacac
 $color9  = #cebdd6
+$color10 = #8200be
+$color11 = #fffc00
 
 $fixed-items-bg = $color1
 $static-items-h1-after = $color2
@@ -18,6 +20,9 @@ $nav-before-bg = $color2
 $nav-after-bg = $color2
 $nav-link-text = $color4
 $nav-separator-border = $color4
+$nav-hover-text-bg = $color10
+$nav-hover-text-color = $color11
+$nav-bg-when-open = $color1
 $exhibitions-before-bg = $color2
 $exhibitions-text-hover = $color2
 $pencil = $color3
@@ -30,6 +35,7 @@ $languages-bg = $color2
 $languages-before-bg = $color1
 $languages-after-bg = $color2
 $languages-active = $color1
+$filter-h1-color = $color2
 $filter-genre-bg = $color5
 $filter-genre-text-color = $color5
 $filter-genre-drop = $color5
@@ -44,6 +50,17 @@ $filter-gifts-bg = $color1
 $filter-gifts-text-color = $color1
 $filter-gifts-drop = $color1
 $filter-border = $color7
+
+@font-face
+    font-family 'brasileiro_onemedium'
+    src url('../fonts/brasileiro_onemedium/brasileiro_onemedium.eot')
+    src url('../fonts/brasileiro_onemedium/brasileiro_onemedium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/brasileiro_onemedium/brasileiro_onemedium.woff2') format('woff2'),
+        url('../fonts/brasileiro_onemedium/brasileiro_onemedium.woff') format('woff'),
+        url('../fonts/brasileiro_onemedium/brasileiro_onemedium.ttf') format('truetype'),
+        url('../fonts/brasileiro_onemedium/brasileiro_onemedium.svg#brasileiro_onemedium') format('svg')
+    font-weight normal
+    font-style normal
 
 body
 ul
@@ -67,13 +84,6 @@ ul
 .content-block
     width 1010px
     margin 0 auto
-    >h1
-        margin 0
-        margin-bottom 50px
 
 .width50
     width 50%
-    float left
-
-// .content
-//     background-image url(../images/main-bg.png)

@@ -11,30 +11,30 @@
         , $staticItems = $('.static-items')
         , $gifts = $('.gifts')
         , $languages = $('.languages')
+        , $fish_1_wrapper = $('#fish_1_wrapper')
+        , $border_1 = $("#border_1")
+        , $hamburgerWrapper = $('.hamburger-wrapper')
+        , $windowOuterWidth = $(window).outerWidth()
         , $languagesItems = null
+        , $border_1_offset = null
+        , $fish_1_wrapperCss = null
         , styleClasses = {
             "hamburger": {
                 "hover": "m-hamberger-hover",
                 "click": "open"
             },
             "exhibitions": "m-exebitions-hover",
-            "gifts": "m-gifts-hover"
+            "gifts": "m-gifts-hover",
+            "nav": "isScrollBelowTitle"
         }
-        , choosenConfig = {
-            "disable_search": true
-        }
-        , $fish_1_wrapper = $('#fish_1_wrapper')
-        , $border_1 = $("#border_1")
-        , $border_1_offset = null
-        , $windowOuterWidth = $(window).outerWidth()
-        , $fish_1_wrapperCss = null;
+        , choosenConfig = { "disable_search": true };
 
         /* init */
         $border_1_offset = $border_1.offset();
         $fish_1_wrapperCss = {
             "top": $border_1_offset.top + ($border_1.outerHeight() - $fish_1_wrapper.height()) / 2 + 'px',
-            "left": $windowOuterWidth - $border_1_offset.left + 16 + 'px',
-            "width": $windowOuterWidth - $border_1_offset.left + 'px'
+            "left": $border_1_offset.left + 16 + 'px',
+            "width": $windowOuterWidth - $border_1_offset.left - 16 + 'px'
         };
         $languagesItems = $languages.find('li');
 
@@ -44,7 +44,7 @@
         fish_1("#fish_1_wrapper");
 
         /* events */
-        $fixedItems.hover(
+        $hamburgerWrapper.hover(
             () => { $fixedItems.addClass(styleClasses.hamburger.hover); }
             , () => { $fixedItems.removeClass(styleClasses.hamburger.hover); }
         );
@@ -58,16 +58,17 @@
         );
 
         $fixedItems.on('click', () => {
+            isScrollBelowTitle(styleClasses.nav);
             $hamburger.toggleClass(styleClasses.hamburger.click);
             $nav.toggleClass(styleClasses.hamburger.click);
         });
-        $gifts.on('click', () => {
-            location.href = 'contests.html';
-        });
+        $gifts.on('click', () => { location.href = 'contests.html'; });
         $languagesItems.on('click', (e) => {
             $languagesItems.removeClass('active');
             $(e.target).addClass('active');
         });
+
+        $(window).scroll(() => { isScrollBelowTitle(styleClasses.nav); });
     });
 
     function fish_1(selector) {
@@ -85,7 +86,7 @@
         };
 
         fish_1_width = $fish_1.outerWidth();
-        stopPoint = ((border_1_width - fish_1_width) / 2  - verticalBorderWidth) * -1;
+        stopPoint = ((border_1_width - fish_1_width) / 2  - verticalBorderWidth + 16) * -1;
         points = {
             "start": "-100%",
             "stop": stopPoint + 'px',
@@ -116,5 +117,13 @@
                 }
             }
         );
+    }
+    function isScrollBelowTitle(cssclass) {
+        let $nav = $('nav');
+        if(window.scrollY > 75) {
+            $nav.addClass(cssclass);
+        } else {
+            $nav.removeClass(cssclass);
+        }
     }
 })();

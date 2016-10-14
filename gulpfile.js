@@ -37,8 +37,12 @@ var conf = {
         "dest": publicPath + "images"
     },
     "index": {
-        "src": frontendPath + "index/index.pug",
-        "dest": frontendPath
+        "src": frontendPath + "pages/index.pug",
+        "dest": publicPath
+    },
+    "fonts": {
+        "src": frontendPath + "fonts",
+        "dest": publicPath + "fonts"
     },
     "html": {
         "src": [
@@ -99,6 +103,10 @@ gulp.task('html', () => sc2(
     $.pug(),
     gulp.dest(conf.html.dest)
 ));
+gulp.task('fonts', () => sc2(
+    gulp.src(conf.fonts.src + '/**/*.*'),
+    gulp.dest(conf.fonts.dest)
+));
 
 gulp.task('watch', () => {
     gulp.watch(frontendPath + 'css/**/*.styl', gulp.series('css'));
@@ -117,6 +125,7 @@ gulp.task('development', gulp.series(
     'images',
     'index',
     'html',
+    'fonts',
     'watch',
     (done) => done()
 ));
