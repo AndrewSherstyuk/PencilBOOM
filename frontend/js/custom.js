@@ -2,6 +2,7 @@
 
 (() => {
     $(document).ready(() => {
+        /* define */
         var $fixedItems = $('.fixed-items')
         , $hamburger = $('.hamburger')
         , $hamburgerSpan = $('.hamburger span')
@@ -9,6 +10,8 @@
         , $nav = $('nav')
         , $staticItems = $('.static-items')
         , $gifts = $('.gifts')
+        , $languages = $('.languages')
+        , $languagesItems = null
         , styleClasses = {
             "hamburger": {
                 "hover": "m-hamberger-hover",
@@ -26,19 +29,22 @@
         , $windowOuterWidth = $(window).outerWidth()
         , $fish_1_wrapperCss = null;
 
+        /* init */
         $border_1_offset = $border_1.offset();
         $fish_1_wrapperCss = {
             "top": $border_1_offset.top + ($border_1.outerHeight() - $fish_1_wrapper.height()) / 2 + 'px',
             "left": $windowOuterWidth - $border_1_offset.left + 16 + 'px',
             "width": $windowOuterWidth - $border_1_offset.left + 'px'
         };
+        $languagesItems = $languages.find('li');
 
+        $fish_1_wrapper.css($fish_1_wrapperCss);
+        $('#filter-genre, #filter-age, #filter-gifts').chosen(choosenConfig);
         $nav.css('height', `calc(${$(window).outerHeight()}px - 106px)`);
-        $hamburger.on('click', () => {
-            $hamburger.toggleClass(styleClasses.hamburger.click);
-            $nav.toggleClass(styleClasses.hamburger.click);
-        });
-        $hamburger.hover(
+        fish_1("#fish_1_wrapper");
+
+        /* events */
+        $fixedItems.hover(
             () => { $fixedItems.addClass(styleClasses.hamburger.hover); }
             , () => { $fixedItems.removeClass(styleClasses.hamburger.hover); }
         );
@@ -51,15 +57,17 @@
             , () => { $staticItems.removeClass(styleClasses.gifts); }
         );
 
-        $('#filter-genre, #filter-age, #filter-gifts')
-            .chosen(choosenConfig)
-            .on('change', function(evt, params) {
-                $('#filter-genre').chosen('chosen:hiding_dropdown');
-            });
-        // $("#filter-genre li, #filter-age li, #filter-gifts li").trigger('chosen:close');
-
-        $fish_1_wrapper.css($fish_1_wrapperCss);
-        fish_1("#fish_1_wrapper");
+        $fixedItems.on('click', () => {
+            $hamburger.toggleClass(styleClasses.hamburger.click);
+            $nav.toggleClass(styleClasses.hamburger.click);
+        });
+        $gifts.on('click', () => {
+            location.href = 'contests.html';
+        });
+        $languagesItems.on('click', (e) => {
+            $languagesItems.removeClass('active');
+            $(e.target).addClass('active');
+        });
     });
 
     function fish_1(selector) {
@@ -99,7 +107,7 @@
                                 "complete": function() {
                                     $fish_1.css( {'right': points.start } );
                                     setTimeout(function() {
-                                        goldfish(selector);
+                                        fish_1(selector);
                                     }, 1);
                                 },
                             }

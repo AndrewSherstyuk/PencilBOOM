@@ -38,6 +38,7 @@ angleArrowLeftSmall(color)
     width 120px
     transition all .3s
     box-shadow 0 0 15px black
+    cursor pointer
     img
         animation preloader 6s infinite linear
         height 100%
@@ -129,9 +130,12 @@ header
             z-index 2
             top -12px
             right -2px
+        a
+            display block
+            line-height $headerHeight
         img
             position relative
-            top 5px
+            top 14px
             left 3px
     &.m-gifts-hover
         .gifts
@@ -176,7 +180,7 @@ header
         angleArrowLeftLarge(white)
         z-index 1
         top -12px
-        left -39px
+        left -37px
         background-color $nav-before-bg
         transition all .3s
     &:after
@@ -195,6 +199,7 @@ header
 .gifts
     @extend $verticalAlignHeight
     padding 0 17px 2px 40px
+    cursor pointer
 .exhibitions
     position relative
     top -2px
@@ -239,7 +244,7 @@ header
     &:before
         @extend $angleArrows
         angleArrowLeftLarge($gifts-before)
-        top -13px
+        top -12px
         left -19px
         background-color $gifts-before-bg
         transition all .3s
@@ -286,6 +291,8 @@ header
         background-color $languages-before-bg
         transition all .3s
     li
+        transition all .3s
+        cursor pointer
         display inline-block
         font-weight bold
         text-shadow 4px 3px 5px black
