@@ -10,13 +10,17 @@ const bowerPath = "bower_components/"
 var conf = {
     "vendors": {
         "css": {
-            "src": bowerPath + "chosen/chosen.css",
+            "src": [
+                bowerPath + "chosen/chosen.css",
+                frontendPath + "css/vendor_css/colorbox.css"/* edited: paths to images */
+            ],
             "dest": ""
         },
         "js": {
             "src": [
                 bowerPath + "jquery/dist/jquery.min.js",
-                bowerPath + "chosen/chosen.jquery.js"
+                bowerPath + "chosen/chosen.jquery.js",
+                bowerPath + "jquery-colorbox/jquery.colorbox-min.js"
             ]
         },
         "images": {

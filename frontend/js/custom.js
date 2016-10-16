@@ -11,12 +11,10 @@
         , $staticItems = $('.static-items')
         , $gifts = $('.gifts')
         , $languages = $('.languages')
-        , $fish_1_wrapper = $('#fish_1_wrapper')
-        , $border_1 = $("#border_1")
         , $hamburgerWrapper = $('.hamburger-wrapper')
+        , $aColorBox = $('a.colorbox')
         , $windowOuterWidth = $(window).outerWidth()
         , $languagesItems = null
-        , $border_1_offset = null
         , $fish_1_wrapperCss = null
         , styleClasses = {
             "hamburger": {
@@ -27,21 +25,37 @@
             "gifts": "m-gifts-hover",
             "nav": "isScrollBelowTitle"
         }
-        , choosenConfig = { "disable_search": true };
-
-        /* init */
-        $border_1_offset = $border_1.offset();
-        $fish_1_wrapperCss = {
-            "top": $border_1_offset.top + ($border_1.outerHeight() - $fish_1_wrapper.height()) / 2 + 'px',
-            "left": $border_1_offset.left + 16 + 'px',
-            "width": $windowOuterWidth - $border_1_offset.left - 16 + 'px'
+        , choosenConfig = { "disable_search": true }
+        , aColorBoxConfig = {
+            "maxWidth": "90%",
+            "maxHeight": "90%",
+            "rel": "colorbox",
+            "retinaImage": true
+        }
+        , goldFishConfig = {
+            "$border": $('#border_1'),
+            "$fish": $('#fish_1'),
+            "$fish_wrapper": $('#fish_1_wrapper'),
+            "direction": 'right',
+            "verticalBorderWidth": 20,
+            "additionalMargin": 16
+        }
+        , block_1_fish_2_Config = {
+            "$border": $('#block_1_border_2'),
+            "$fish": $('#fish_block_1_2'),
+            "$fish_wrapper": $('#fish_block_1_2_wrapper'),
+            "direction": 'right',
+            "verticalBorderWidth": 0,
+            "additionalMargin": -25
         };
-        $languagesItems = $languages.find('li');
 
-        $fish_1_wrapper.css($fish_1_wrapperCss);
+        $languagesItems = $languages.find('li');
+        $aColorBox.colorbox(aColorBoxConfig);
         $('#filter-genre, #filter-age, #filter-gifts').chosen(choosenConfig);
         $nav.css('height', `calc(${$(window).outerHeight()}px - 106px)`);
-        fish_1("#fish_1_wrapper");
+
+        fish(goldFishConfig);
+        fish(block_1_fish_2_Config);
 
         /* events */
         $hamburgerWrapper.hover(
@@ -71,59 +85,64 @@
         $(window).scroll(() => { isScrollBelowTitle(styleClasses.nav); });
     });
 
-    function fish_1(selector) {
-        var verticalBorderWidth = 20
-        , border_1_width = $('#border_1').outerWidth()
-        , $fish_1 = $('#fish_1')
-        , fish_1_width = null
-        , stopPoint = null
-        , points = null
+    function fish(config) {
+        config.verticalBorderWidth = config.verticalBorderWidth || 0;
+
+        /* define size and position of viewport(border) */
+        let border_offset = config.$border.offset()
+          , border_width = config.$border.outerWidth();
+
+        let fish_wrapperCss = {
+            "top": (border_offset.top - config.$border.closest('.full-width').offset().top) + (config.$border.outerHeight() - config.$fish_wrapper.height()) / 2 + 'px',
+            "left": border_offset.left + config.additionalMargin + 'px',
+            "width": $(window).outerWidth() - border_offset.left - config.additionalMargin + 'px'
+        };
+        config.$fish_wrapper.css(fish_wrapperCss);
+
+        /* define fish behaviour */
+        let fish_width = config.$fish.outerWidth()
         , animationDuration = 10000
         , pauseTimeAnimation = 5000
-        , easingType = {
-            "swing": 'swing',
-            "linear": 'linear'
-        };
+        , stop = {}
+        , out = {}
+        , start = {};
 
-        fish_1_width = $fish_1.outerWidth();
-        stopPoint = ((border_1_width - fish_1_width) / 2  - verticalBorderWidth + 16) * -1;
-        points = {
-            "start": "-100%",
-            "stop": stopPoint + 'px',
-            "out": fish_1_width + 'px'
-        };
+        let stopPointDisagreement = border_width - fish_width;
+        let isStopPointDisagreementPossitive = stopPointDisagreement > 0;
+        stop[config.direction] = (stopPointDisagreement / 2 * -1 + ((isStopPointDisagreementPossitive) ? 0 : config.additionalMargin)) + 'px';
+        out[config.direction] = fish_width + 'px';
+        start[config.direction] = '-100%';
 
-        $fish_1.animate(
-            { "right": points.stop },
-            {
-                "duration": animationDuration,
-                "easing": easingType.swing,
-                "complete": function() {
-                    setTimeout(function() {
-                        $fish_1.animate(
-                            { 'right': points.out },
-                            {
-                                "duration": animationDuration,
-                                "easing": easingType.linear,
-                                "complete": function() {
-                                    $fish_1.css( {'right': points.start } );
-                                    setTimeout(function() {
-                                        fish_1(selector);
-                                    }, 1);
-                                },
-                            }
-                        );
-                    }, pauseTimeAnimation);
+        runAnimate(config);
+
+        function runAnimate(config) {
+            config.$fish.animate(
+                stop,
+                {
+                    "duration": animationDuration,
+                    "easing": 'swing',
+                    "complete": () => {
+                        setTimeout(() => {
+                            config.$fish.animate(
+                                out,
+                                {
+                                    "duration": animationDuration,
+                                    "easing": 'linear',
+                                    "complete": () => {
+                                        config.$fish.css( start );
+                                        setTimeout(() => {
+                                            runAnimate(config);
+                                        }, 1);
+                                    },
+                                }
+                            );
+                        }, pauseTimeAnimation);
+                    }
                 }
-            }
-        );
-    }
-    function isScrollBelowTitle(cssclass) {
-        let $nav = $('nav');
-        if(window.scrollY > 75) {
-            $nav.addClass(cssclass);
-        } else {
-            $nav.removeClass(cssclass);
+            );
         }
+    }
+    function isScrollBelowTitle(cssClass) {
+        (window.scrollY > 75) ? $('nav').addClass(cssClass) : $('nav').removeClass(cssClass);
     }
 })();
