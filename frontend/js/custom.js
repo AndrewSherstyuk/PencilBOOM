@@ -13,7 +13,7 @@
         , $languages = $('.languages')
         , $hamburgerWrapper = $('.hamburger-wrapper')
         , $aColorBox = $('a.colorbox')
-        , $windowOuterWidth = $(window).outerWidth()
+        , $windowOuterWidth = $('html').outerWidth()
         , $languagesItems = null
         , $fish_1_wrapperCss = null
         , styleClasses = {
@@ -50,7 +50,7 @@
             "direction": 'right',
             "verticalBorderWidth": 0,
             "additionalMargin": -25,
-            "outWidth": 126
+            "outWidth": 148
         };
 
         $languagesItems = $languages.find('li');
@@ -92,7 +92,6 @@
     function fish(config) {
         config.verticalBorderWidth = config.verticalBorderWidth || 0;
 
-        /* define size and position of viewport(border) */
         let border_offset = config.$border.offset()
           , border_width = config.$border.outerWidth()
           , both_borders = config.verticalBorderWidth * 2
@@ -101,9 +100,9 @@
         let fish_wrapperCss = {
             "top": (border_offset.top - config.$border.closest('.full-width').offset().top) + (config.$border.outerHeight() - config.$fish_wrapper.height()) / 2 + 'px',
             "right": 0,
-            "width": ($(window).outerWidth() - border_offset.left - both_borders - padding + config.outWidth) * 2 + 'px'
+            "width": ($('html').outerWidth() - border_offset.left - both_borders - padding + config.outWidth) * 2 + 'px'
         };
-        $(config.$viewport).css('width', parseInt(fish_wrapperCss.width) / 2 + padding + 'px')
+        $(config.$viewport).css('width', parseInt(fish_wrapperCss.width) / 2 + padding + config.outWidth + 'px')
         config.$fish_wrapper.css(fish_wrapperCss);
 
         /* define fish behaviour */
@@ -116,8 +115,7 @@
 
         let stopPointDisagreement = border_width - fish_width;
         let isStopPointDisagreementPossitive = stopPointDisagreement > 0;
-        stop[config.direction] = (config.outWidth) ? config.outWidth * -1 : '0%';
-        // stop[config.direction] = ((stopPointDisagreement / 2 - both_borders) * -1 + ((isStopPointDisagreementPossitive) ? 0 : config.additionalMargin)) + 'px';debugger;
+        stop[config.direction] = '0%';
         out[config.direction] = '100%';
         start[config.direction] = '-100%';
 
