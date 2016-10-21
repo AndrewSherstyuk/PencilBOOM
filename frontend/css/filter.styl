@@ -48,6 +48,7 @@ select-triangle-open(color)
         font-weight 100
         color $filter-h1-color
         letter-spacing 6px
+        text-shadow 0 0 5px black
 .filter-wrapper
     width calc(50% - 50px)
     float left
@@ -67,6 +68,17 @@ select-triangle-open(color)
     &:first-child
         margin-top 0
 
+.fish-viewport
+    padding-left 30px
+    position absolute
+    right 0
+    top 0
+    box-sizing border-box
+    overflow hidden
+    &#fish_block_1_2-viewport
+        padding-left 0
+        img
+            z-index 2
 .fishnet
     display block
     width 85%
