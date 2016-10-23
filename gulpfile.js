@@ -20,7 +20,8 @@ var conf = {
             "src": [
                 bowerPath + "jquery/dist/jquery.min.js",
                 bowerPath + "chosen/chosen.jquery.js",
-                bowerPath + "jquery-colorbox/jquery.colorbox-min.js"
+                bowerPath + "jquery-colorbox/jquery.colorbox-min.js",
+                frontendPath + "js/vendor/watch.js" /* remove console.log manualy */
             ]
         },
         "images": {

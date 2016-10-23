@@ -38,9 +38,7 @@
             "$fish_wrapper": $('#fish_1_wrapper'),
             "$viewport": $('#fish_1-viewport'),
             "direction": 'right',
-            "verticalBorderWidth": 25,
-            "additionalMargin": 16,
-            "outWidth": 0
+            "outWidth": -80
         }
         , block_1_fish_2_Config = {
             "$border": $('#block_1_border_2'),
@@ -48,9 +46,7 @@
             "$fish_wrapper": $('#fish_block_1_2_wrapper'),
             "$viewport": $('#fish_block_1_2-viewport'),
             "direction": 'right',
-            "verticalBorderWidth": 0,
-            "additionalMargin": -25,
-            "outWidth": 148
+            "outWidth": 0
         };
 
         $languagesItems = $languages.find('li');
@@ -95,31 +91,50 @@
         let border_offset = config.$border.offset()
           , border_width = config.$border.outerWidth()
           , both_borders = config.verticalBorderWidth * 2
-          , padding = parseInt($(config.$viewport).css('padding-left'));
+          , padding = parseInt($(config.$viewport).css('padding-left'))
+          /* define fish behaviour */
+          , fish_width = config.$fish.outerWidth()
+          , animationDuration = 5000
+          , pauseTimeAnimation = 5000
+          , fish_wrapperCss = {}
+          , stop = {}
+          , out = {}
+          , start = {}
+          , animationAfterStopPoint = null
+          , fishWayOneWay = null
+          , fishWayBothWay = null
+          , timeoutIds = [];
 
-        let fish_wrapperCss = {
+        fishWayOneWay = ($('html').outerWidth() - border_offset.left);
+        fishWayBothWay = fishWayOneWay * 2
+        fish_wrapperCss = {
             "top": (border_offset.top - config.$border.closest('.full-width').offset().top) + (config.$border.outerHeight() - config.$fish_wrapper.height()) / 2 + 'px',
             "right": 0,
-            "width": ($('html').outerWidth() - border_offset.left - both_borders - padding + config.outWidth) * 2 + 'px'
+            "width": fishWayBothWay + padding + 'px'
         };
-        $(config.$viewport).css('width', parseInt(fish_wrapperCss.width) / 2 + padding + config.outWidth + 'px')
+        $(config.$viewport).css('width', $('html').outerWidth() - border_offset.left + padding + config.outWidth + 'px')
         config.$fish_wrapper.css(fish_wrapperCss);
-
-        /* define fish behaviour */
-        let fish_width = config.$fish.outerWidth()
-        , animationDuration = 5000
-        , pauseTimeAnimation = 5000
-        , stop = {}
-        , out = {}
-        , start = {};
-
-        let stopPointDisagreement = border_width - fish_width;
-        let isStopPointDisagreementPossitive = stopPointDisagreement > 0;
         stop[config.direction] = '0%';
         out[config.direction] = '100%';
         start[config.direction] = '-100%';
 
         runAnimate(config);
+
+        config.$fish.watch('right', function() {
+            if((parseInt($(this).css('right')) >= (parseInt(fish_width) + padding)) && animationAfterStopPoint) {
+                animationAfterStopPoint = false;
+                config.$fish.finish();
+                for(let i = 0; i < timeoutIds.length; i++) {
+                    clearTimeout(timeoutIds[i]);
+                }
+                timeoutIds = [];
+                runAnimate(config);
+            }
+            
+            if(parseInt($(this).css('right')) >= parseInt(stop[config.direction])) {
+                animationAfterStopPoint = true;
+            }
+        });
 
         function runAnimate(config) {
             config.$fish.animate(
@@ -128,21 +143,21 @@
                     "duration": animationDuration,
                     "easing": 'swing',
                     "complete": () => {
-                        setTimeout(() => {
+                        timeoutIds.push(setTimeout(() => {
                             config.$fish.animate(
                                 out,
                                 {
                                     "duration": animationDuration,
-                                    "easing": 'linear',
+                                    "easing": 'swing',
                                     "complete": () => {
                                         config.$fish.css( start );
-                                        setTimeout(() => {
+                                        timeoutIds.push(setTimeout(() => {
                                             runAnimate(config);
-                                        }, 1);
+                                        }, 1));
                                     },
                                 }
                             );
-                        }, pauseTimeAnimation);
+                        }, pauseTimeAnimation));
                     }
                 }
             );
