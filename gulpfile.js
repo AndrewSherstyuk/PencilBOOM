@@ -117,7 +117,7 @@ gulp.task('watch', () => {
     gulp.watch(frontendPath + 'css/**/*.styl', gulp.series('css'));
     gulp.watch(conf.js.src + '**/*.js', gulp.series('js'));
     gulp.watch(conf.images.src + '**/*.*', gulp.series('images'));
-    gulp.watch(frontendPath + 'pages/**/*.pug', gulp.series('html'));
+    gulp.watch(frontendPath + 'pages/**/*.pug', gulp.series('html', 'index'));
 });
 
 gulp.task('development', gulp.series(
