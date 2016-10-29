@@ -1,5 +1,13 @@
-.full-width
-    #giant_fish_block_2.giant_fish_block_2
-    #giant_fish_2_wrapper.giant_fish_2_wrapper
-        #giant_fish_2_wrapper-viewport.fish-viewport
-            img#giant_fish_2.fishes(src="images/content/giant/giant_fish_2.png")
+//- .full-width
+//-     #giant_fish_block_2.giant_fish_block_2
+//-     #giant_fish_2_wrapper.giant_fish_2_wrapper
+//-         #giant_fish_2_wrapper-viewport.fish-viewport
+//-             img#giant_fish_2.fishes(src="images/content/giant/giant_fish_2.png")
+div(style="position: relative; overflow: hidden; display: block; z-index: 5; height: 490px; top: 20px;")
+  .test(style="z-index: 4;")
+  div(style="width: 100%; height: 110px; z-index: 3; position: relative; transform: rotate(3deg); background-image: url(images/main-bg.png); top: -14%;")
+  div(style=" position: fixed; top: calc(50% - 90.5px); z-index: 1; left: calc(50% - 407px);")
+    img#giant_fish_1.fishes(src="images/content/giant/giant_fish_2.png")
+  div(style="width: 100%; height: 110px; z-index: 3; position: relative; transform: rotate(-3deg); background-image: url(images/main-bg.png); top: 62%;")
+  .test2(style="z-index: 4;")
+  div(style="background-image: url(images/giant_bg.png); width: 100%; height: 100%; position: relative; top: -55%;")
