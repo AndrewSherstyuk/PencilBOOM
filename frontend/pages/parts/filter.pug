@@ -1,7 +1,9 @@
 .full-width
     .filter-block.filters.clearfix
         .width50.filter-wrapper.clearfix
-            h1 Гениариум
+            h1
+                each character,index in ['Г','е','н','и','а','р','и','у','м']
+                    span(class="header" + (index+1))= character
             .filter
                 label.filter-genre жанр
                 select#filter-genre

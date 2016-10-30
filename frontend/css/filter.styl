@@ -32,11 +32,6 @@ select-triangle-closed(color)
     border-right 6px solid transparent
     border-top 11px solid color
 select-triangle-open(color)
-    // @extend $filter
-    // border-top 0 none
-    // border-left 7px solid transparent
-    // border-right 6px solid transparent
-    // border-bottom 11px solid color
     transform rotate(180deg)
 .filters
     margin-bottom 50px
@@ -49,6 +44,7 @@ select-triangle-open(color)
         color $filter-h1-color
         letter-spacing 6px
         text-shadow 0 0 5px black
+        letter-spacing 4.5px
 .filter-wrapper
     width calc(50% - 50px)
     float left
@@ -194,3 +190,37 @@ select-triangle-open(color)
     box-shadow none
 .chosen-container-single .chosen-drop
     margin-top 0
+
+$animationStep = 1.5%
+$active = 1%
+$back = 6%
+$active2 = 51%
+$back2 = 56%
+$animationStateDefault = translate(0, 0)
+$animationStateActive = translate(0, -15px)
+for i in 1..10
+    @keyframes jumpingHeader{i}
+        0%
+            transform $animationStateDefault
+        {$active}
+            transform $animationStateActive
+        {$back}
+            transform $animationStateDefault
+        50%
+            transform $animationStateDefault
+        {$active2}
+            transform $animationStateActive
+        {$back2}
+            transform $animationStateDefault
+        100%
+            $animationStateDefault
+    $active = $active + $animationStep
+    $back = $back + $animationStep
+    $active2 = $active2 + $animationStep
+    $back2 = $back2 + $animationStep
+    .header{i}
+        display inline-block
+        animation-timing-function ease-in-out
+        animation-duration 4s
+        animation-iteration-count infinite
+        animation-name jumpingHeader + i
