@@ -3,11 +3,11 @@
 //-         #giant_fish_1_wrapper-viewport.fish-viewport
 //-             img#giant_fish_1.fishes(src="images/content/giant/giant_fish_1.png")
 //-     #giant_fish_block_1.giant_fish_block_1
-div(style="position: relative; overflow: hidden; display: block; z-index: 5; height: 490px; top: 20px;")
-  .test(style="z-index: 4;")
-  div(style="width: 100%; height: 110px; z-index: 3; position: relative; transform: rotate(3deg); background-image: url(images/main-bg.png); top: -14%;")
-  div(style=" position: fixed; top: calc(50% - 85px); z-index: 1; left: calc(50% - 279px);")
-    img#giant_fish_1.fishes(src="images/content/giant/giant_fish_1.png")
-  div(style="width: 100%; height: 110px; z-index: 3; position: relative; transform: rotate(-3deg); background-image: url(images/main-bg.png); top: 62%;")
-  .test2(style="z-index: 4;")
-  div(style="background-image: url(images/giant_bg.png); width: 100%; height: 100%; position: relative; top: -55%;")
+div(style="position: relative")
+  .test
+  div(style="position: relative; overflow: hidden; display: block; z-index: 5; height: 625px; top: -10px;")
+    div(style="width: 120%; height: 160px; z-index: 3; position: absolute; transform: rotate(4.5deg); background-image: url(images/main-bg.png); top: -10%; left: -1px")
+    div(style="position: fixed; top: 0; z-index: 1; left: 0; background-image: url(images/content/giant/giant_fish_1_2.png); width: 100%; height: 625px;")
+    div(style="width: 100%; height: 110px; z-index: 3; position: relative; transform: rotate(-3deg); background-image: url(images/main-bg.png); top: 62%; display: none;")
+    div(style="background-image: url(images/giant_bg.png); width: 100%; height: 100%; position: relative;")
+  .test2(style="z-index: 4; display: none;")
