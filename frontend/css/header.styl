@@ -55,6 +55,7 @@ header
     margin-bottom 83px
     padding-left 69px
     height $headerHeight
+    background-color white
     color white
     box-shadow 0 0 15px black
 
@@ -109,13 +110,11 @@ header
             transform rotate(-45deg)
 
 .static-items
-    background-color white
     height $headerHeight
     position relative
+    z-index 8
     overflow hidden
-    padding-left 135px
-    border-top-left-radius 50px
-    border-bottom-left-radius 50px
+    margin-left 135px
     .name
         @extend $verticalAlignHeight
         margin 0
