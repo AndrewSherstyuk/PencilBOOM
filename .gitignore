@@ -4,3 +4,4 @@ node_modules/
 public/
 images_all/
 frontend/images/content/
+out/

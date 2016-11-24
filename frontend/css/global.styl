@@ -101,6 +101,7 @@ ul
 
 .filter-block
     margin 0 auto
+    max-width 1010px
 
 .gallery-block
     width 950px
@@ -115,18 +116,22 @@ ul
     height: 100px;
     background-repeat: repeat-x;
     position: absolute;
-    top: 68px;
+    top: 34px;
     left 0
     width: 100%;
     transform: rotate(4.5deg);
     z-index 7
+    &__reverse
+        transform: rotate(-4.5deg);
 .test2
     background-image: url(../images/giant-border_2.png);
     height: 100px;
     background-repeat: repeat-x;
-    position: fixed;
-    top: 77%;
+    position: absolute;
+    bottom -78px;
     left -1%
     width: 101%;
     transform: rotate(-3deg);
     z-index 4
+    &__reverse
+        transform: rotate(3deg);
