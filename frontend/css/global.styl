@@ -76,6 +76,11 @@ $footer-subscribe-button-bg = $color1
     font-weight normal
     font-style normal
 
+*
+    --clip-path initial
+    -webkit-clip-path var(--clip-path)
+    clip-path var(--clip-path)
+
 body
 ul
     margin 0
@@ -116,7 +121,7 @@ ul
     height: 100px;
     background-repeat: repeat-x;
     position: absolute;
-    top: 34px;
+    top: 12px;
     left 0
     width: 100%;
     transform: rotate(4.5deg);
@@ -128,10 +133,10 @@ ul
     height: 100px;
     background-repeat: repeat-x;
     position: absolute;
-    bottom -78px;
-    left -1%
-    width: 101%;
-    transform: rotate(-3deg);
+    bottom -24px;
+    left 0
+    width: 100%;
+    transform: rotate(-2deg);
     z-index 4
     &__reverse
         transform: rotate(3deg);
