@@ -193,6 +193,46 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
             "direction": 'right',
             "out_width": 0
         }
+        , block_2_fish_1_Config = {
+            "$border": $('#block_2_border_1'),
+            "$fish": $('#fish_block_2_1'),
+            "$fish_wrapper": $('#fish_block_2_1_wrapper'),
+            "$viewport": $('#fish_block_2_1-viewport'),
+            "direction": 'right',
+            "out_width": 0
+        }
+        , block_2_fish_3_Config = {
+            "$border": $('#block_2_border_3'),
+            "$fish": $('#fish_block_2_3'),
+            "$fish_wrapper": $('#fish_block_2_3_wrapper'),
+            "$viewport": $('#fish_block_2_3-viewport'),
+            "direction": 'right',
+            "out_width": 0
+        }
+        , block_3_fish_1_Config = {
+            "$border": $('#block_3_border_1'),
+            "$fish": $('#fish_block_3_1'),
+            "$fish_wrapper": $('#fish_block_3_1_wrapper'),
+            "$viewport": $('#fish_block_3_1-viewport'),
+            "direction": 'right',
+            "out_width": 0
+        }
+        , block_3_fish_3_Config = {
+            "$border": $('#block_3_border_3'),
+            "$fish": $('#fish_block_3_3'),
+            "$fish_wrapper": $('#fish_block_3_3_wrapper'),
+            "$viewport": $('#fish_block_3_3-viewport'),
+            "direction": 'right',
+            "out_width": 0
+        }
+        , block_4_fish_1_Config = {
+            "$border": $('#block_4_border_1'),
+            "$fish": $('#fish_block_4_1'),
+            "$fish_wrapper": $('#fish_block_4_1_wrapper'),
+            "$viewport": $('#fish_block_4_1-viewport'),
+            "direction": 'right',
+            "out_width": 0
+        }
         , choosen_config = {
             "disable_search": true,
             "selectors": ['#filter-genre', '#filter-age', '#filter-gifts']
@@ -228,6 +268,26 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
         let fish_block_1_fish_2 = new PENCILBOOM.Fish(block_1_fish_2_Config);
         fish_block_1_fish_2.init();
         fish_block_1_fish_2.runAnimate();
+
+        let fish_block_2_fish_1 = new PENCILBOOM.Fish(block_2_fish_1_Config);
+        fish_block_2_fish_1.init();
+        fish_block_2_fish_1.runAnimate();
+
+        let fish_block_2_fish_3 = new PENCILBOOM.Fish(block_2_fish_3_Config);
+        fish_block_2_fish_3.init();
+        fish_block_2_fish_3.runAnimate();
+
+        let fish_block_3_fish_1 = new PENCILBOOM.Fish(block_3_fish_1_Config);
+        fish_block_3_fish_1.init();
+        fish_block_3_fish_1.runAnimate();
+
+        let fish_block_3_fish_3 = new PENCILBOOM.Fish(block_3_fish_3_Config);
+        fish_block_3_fish_3.init();
+        fish_block_3_fish_3.runAnimate();
+
+        let fish_block_4_fish_1 = new PENCILBOOM.Fish(block_4_fish_1_Config);
+        fish_block_4_fish_1.init();
+        fish_block_4_fish_1.runAnimate();
 
         let menu = new PENCILBOOM.menu();
 

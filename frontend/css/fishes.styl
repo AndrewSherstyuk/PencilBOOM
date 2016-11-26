@@ -1,58 +1,97 @@
-.block_1_border_2
+block_border(top, height)
   position absolute
-  top 309px
+  top top
   left 621px
   width 178px
-  height 91px
-
-.fish_block_1_2_wrapper
+  height height
+fish_block_wrapper(height)
   position absolute
   overflow hidden
-  height 92px
+  height height
   .fishes
     right -100%
-    height 92px
+    height height
+
+/* block_border */
+.block_1_border_2
+  block_border(309px, 108px)
+
+.block_2_border_1
+  block_border(170px, 122px)
+
+.block_2_border_3
+  block_border(630px, 87px)
+  left 638px
+
+.block_3_border_1
+  block_border(169px, 87px)
+
+.block_3_border_3
+  block_border(565px, 127px)
+
+.block_4_border_1
+  block_border(158px, 97px)
+  left 645px
+
+/* fish_block_wrapper */
+.fish_block_1_2_wrapper
+  fish_block_wrapper(108px)
+
+.fish_block_2_1_wrapper
+  fish_block_wrapper(122px)
+
+.fish_block_2_3_wrapper
+  fish_block_wrapper(87px)
+
+.fish_block_3_1_wrapper
+  fish_block_wrapper(87px)
+
+.fish_block_3_3_wrapper
+  fish_block_wrapper(127px)
+
+.fish_block_4_1_wrapper
+  fish_block_wrapper(97px)
 
 .fishes
   position relative
 
 .fish_1_wrapper
-    position absolute
-    overflow hidden
-    z-index -1
-    height 231px
+  position absolute
+  overflow hidden
+  z-index -1
+  height 231px
 .fish_1
-    position relative
-    right -100%
+  position relative
+  right -100%
 
 .border_1-wrapper
   display inline-block
   position relative
 
 .border_1
-    position relative
-    z-index 3
+  position relative
+  z-index 3
 
 .giant_fish_block_1
 .giant_fish_block_2
 .giant_fish_block_3
-    width 100%
-    height 491px
-    background-repeat no-repeat
-    background-size 100% 491px
-    background-image url(../images/giant_block_1.png)
+  width 100%
+  height 491px
+  background-repeat no-repeat
+  background-size 100% 491px
+  background-image url(../images/giant_block_1.png)
 .giant_fish_block_2
-    transform scaleX(-1)
+  transform scaleX(-1)
 
 .giant_fish_1_wrapper
-    .fish-viewport
-        top 180px
-        right calc(50% - 279px)
+  .fish-viewport
+    top 180px
+    right calc(50% - 279px)
 .giant_fish_2_wrapper
-    .fish-viewport
-        top 180px
-        right calc(50% - 407px)
+  .fish-viewport
+    top 180px
+    right calc(50% - 407px)
 .giant_fish_3_wrapper
-    .fish-viewport
-        top 150px
-        right calc(50% - 294px)
+  .fish-viewport
+    top 150px
+    right calc(50% - 294px)
