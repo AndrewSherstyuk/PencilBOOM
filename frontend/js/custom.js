@@ -30,7 +30,7 @@ var PENCILBOOM = {};
  * 
  */
 PENCILBOOM.Fish = function(config) {
-    this.name = config.hasOwnProperty('name');
+    this.isLeftDirection = config.direction == 'left';
 
     /* default and define variables */
     this.animation_duration = 5000;
@@ -45,11 +45,11 @@ PENCILBOOM.Fish = function(config) {
 
     /* get values from config */
     this.direction = config.direction;
-    this.animation.stop[config.direction] = (this.name) ? (config.$border.offset().left + config.$border.outerWidth() - config.$fish.outerWidth()) + 'px' : '0%';
+    this.animation.stop[config.direction] = (this.isLeftDirection) ? (config.$border.offset().left + config.$border.outerWidth() - config.$fish.outerWidth()) + 'px' : '0%';
     this.animation.out[config.direction] = '100%';
     this.animation.start[config.direction] = '-100%';
     this.fish_width = config.$fish.outerWidth();
-    this.padding = (this.name) ? parseInt($(config.$viewport).css('padding-right')) : parseInt($(config.$viewport).css('padding-left'));
+    this.padding = (this.isLeftDirection) ? parseInt($(config.$viewport).css('padding-right')) : parseInt($(config.$viewport).css('padding-left'));
     this.out_width = config.out_width;
 
     /* get offset object from config element */
@@ -146,7 +146,7 @@ PENCILBOOM.Fish.prototype.init = function() {
     };
     side = new FISHBEHAVIOUR.SideCalculation(side_config);
     
-    if(this.direction == 'left') {
+    if(this.isLeftDirection) {
         side_calculation = side.left();
         fish_way_one_way = side_calculation.fish_way_one_way();
         fish_way_both_way = side_calculation.fish_way_both_way();
@@ -295,6 +295,16 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
             "direction": 'right',
             "out_width": 0
         }
+        /* HOW TO INIT the NEW FISH: step 5 */
+        , block_2_fish_2_Config = {
+            "$border": $('#block_2_border_2'),
+            "$fish": $('#fish_block_2_2'),
+            "$fish_wrapper": $('#fish_block_2_2_wrapper'),
+            "$viewport": $('#fish_block_2_2-viewport'),
+            "direction": 'left',
+            "out_width": 0
+        }
+        /* HOW TO INIT the NEW FISH: step 5 */
         , block_2_fish_3_Config = {
             "$border": $('#block_2_border_3'),
             "$fish": $('#fish_block_2_3'),
@@ -370,6 +380,12 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
         let fish_block_2_fish_1 = new PENCILBOOM.Fish(block_2_fish_1_Config);
         fish_block_2_fish_1.init();
         fish_block_2_fish_1.runAnimate();
+
+        /* HOW TO INIT the NEW FISH: step 6 */
+        let fish_block_2_fish_2 = new PENCILBOOM.Fish(block_2_fish_2_Config);
+        fish_block_2_fish_2.init();
+        fish_block_2_fish_2.runAnimate();
+        /* HOW TO INIT the NEW FISH: step 6 */
 
         let fish_block_2_fish_3 = new PENCILBOOM.Fish(block_2_fish_3_Config);
         fish_block_2_fish_3.init();

@@ -9,20 +9,25 @@ fish_block_wrapper(height)
   overflow hidden
   height height
   .fishes
-    // right -100%
     height height
 
 /* block_border */
 .block_1_border_1
   block_border(0, 80px)
   left 130px
-  background-color rgba(255,0,0,.3)
 
 .block_1_border_2
   block_border(309px, 108px)
 
 .block_2_border_1
   block_border(170px, 122px)
+
+/* HOW TO INIT the NEW FISH: step 1 */
+.block_2_border_2
+  block_border(326px, 122px)
+  left 180px
+  width 209px
+/* HOW TO INIT the NEW FISH: step 1 */
 
 .block_2_border_3
   block_border(630px, 87px)
@@ -51,25 +56,57 @@ fish_block_wrapper(height)
 
 .fish_block_1_2_wrapper
   fish_block_wrapper(114px)
-  .fish-viewport
-    right 0
   .fishes
     right -100%
+  .fish-viewport
+    right 0
 
 .fish_block_2_1_wrapper
   fish_block_wrapper(122px)
+  .fishes
+    right -100%
+  .fish-viewport
+    right 0
+
+/* HOW TO INIT the NEW FISH: step 2 */
+.fish_block_2_2_wrapper
+  left 0
+  fish_block_wrapper(122px)
+  .fishes
+    left -100%
+  .fish-viewport
+    left 0
+    padding-left 0
+    padding-right 22px
+/* HOW TO INIT the NEW FISH: step 2 */
 
 .fish_block_2_3_wrapper
   fish_block_wrapper(87px)
+  .fishes
+    right -100%
+  .fish-viewport
+    right 0
 
 .fish_block_3_1_wrapper
   fish_block_wrapper(87px)
+  .fishes
+    right -100%
+  .fish-viewport
+    right 0
 
 .fish_block_3_3_wrapper
   fish_block_wrapper(127px)
+  .fishes
+    right -100%
+  .fish-viewport
+    right 0
 
 .fish_block_4_1_wrapper
   fish_block_wrapper(97px)
+  .fishes
+    right -100%
+  .fish-viewport
+    right 0
 
 .fishes
   position relative
