@@ -9,10 +9,15 @@ fish_block_wrapper(height)
   overflow hidden
   height height
   .fishes
-    right -100%
+    // right -100%
     height height
 
 /* block_border */
+.block_1_border_1
+  block_border(0, 80px)
+  left 130px
+  background-color rgba(255,0,0,.3)
+
 .block_1_border_2
   block_border(309px, 108px)
 
@@ -34,8 +39,22 @@ fish_block_wrapper(height)
   left 645px
 
 /* fish_block_wrapper */
+.fish_block_1_1_wrapper
+  left 0
+  fish_block_wrapper(80px)
+  .fishes
+    left -100%
+  .fish-viewport
+    left 0
+    padding-left 0
+    padding-right 22px
+
 .fish_block_1_2_wrapper
-  fish_block_wrapper(108px)
+  fish_block_wrapper(114px)
+  .fish-viewport
+    right 0
+  .fishes
+    right -100%
 
 .fish_block_2_1_wrapper
   fish_block_wrapper(122px)
