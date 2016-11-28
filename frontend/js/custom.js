@@ -26,13 +26,12 @@ var PENCILBOOM = {};
  * @class Fish
  * @constructor
  * @namespace PENCILBOOM
- * @param {FishConfig} config - {@link FishConfig} onject definition
+ * @param {FishConfig} config - {@link FishConfig} object definition
  * 
  */
 PENCILBOOM.Fish = function(config) {
     this.isLeftDirection = config.direction == 'left';
 
-    /* default and define variables */
     this.animation_duration = 5000;
     this.pause_time_animation = 5000;
     this.timeout_ids = [];
@@ -43,7 +42,6 @@ PENCILBOOM.Fish = function(config) {
     };
     this.animation_after_stop_point = null;
 
-    /* get values from config */
     this.direction = config.direction;
     this.animation.stop[config.direction] = (this.isLeftDirection) ? (config.$border.offset().left + config.$border.outerWidth() - config.$fish.outerWidth()) + 'px' : '0%';
     this.animation.out[config.direction] = '100%';
@@ -52,10 +50,8 @@ PENCILBOOM.Fish = function(config) {
     this.padding = (this.isLeftDirection) ? parseInt($(config.$viewport).css('padding-right')) : parseInt($(config.$viewport).css('padding-left'));
     this.out_width = config.out_width;
 
-    /* get offset object from config element */
     this.border_offset = config.$border.offset();
 
-    /* get elements from config */
     this.$viewport = config.$viewport;
     this.$border = config.$border;
     this.$fish_wrapper = config.$fish_wrapper;
@@ -68,9 +64,36 @@ PENCILBOOM.Fish = function(config) {
  * @method init
  */
 PENCILBOOM.Fish.prototype.init = function() {
-    /* private init module FISHBEHAVIOUR */
-    let FISHBEHAVIOUR = {};
-    FISHBEHAVIOUR.SideCalculation = function(config) {
+    /**
+     * Fish behaviour application
+     *
+     * @module fishbehaviour_
+     */
+    let FISHBEHAVIOUR_ = {};
+
+    /**
+     * Define fish params
+     * 
+     * @typedef {Object} Config
+     * @property {Number} $window_outer_width - Window element outer width
+     * @property {Number} border_offset_left - Border element offset left
+     * @property {Number} count_of_left_right_sides - It's a count number of left and right sides
+     * @property {Number} padding - Get viewport 'extention' from css
+     * @property {Number} out_width - Sum of both(left and right) fish frames side 'container'(borders)
+     * @property {Object} $border_outerWidth - Border outer width
+     *
+     */
+
+    /**
+     * Fish behaviour mods: left/right
+     *
+     * @class SideCalculation
+     * @constructor
+     * @namespace FISHBEHAVIOUR_
+     * @param {Config} config - {@link Config} object definition
+     * 
+     */
+    FISHBEHAVIOUR_.SideCalculation = function(config) {
         this.$window_outer_width = config.$window_outer_width;
         this.border_offset_left = config.border_offset_left;
         this.count_of_left_right_sides = config.count_of_left_right_sides;
@@ -79,7 +102,25 @@ PENCILBOOM.Fish.prototype.init = function() {
         this.$border_outerWidth = config.$border_outerWidth;
         this.fish_way_one_way = null;
     }
-    FISHBEHAVIOUR.SideCalculation.prototype.left = function() {
+
+    /**
+     * Left methods
+     *
+     * @typedef {Object} Left
+     * @property {Function} fishWayOneWay - {@link fishWayOneWay} method
+     * @property {Function} fishWayBothWay - {@link fishWayBothWay} method
+     * @property {Function} viewportWidth - {@link viewportWidth} method
+     *
+     */
+
+    /**
+     * Fish behaviour by left side
+     * 
+     * @method left
+     * @return {Object} left - {@link Left} methods
+     *
+     */
+    FISHBEHAVIOUR_.SideCalculation.prototype.left = function() {
         let _this = this;
 
         return {
@@ -88,21 +129,42 @@ PENCILBOOM.Fish.prototype.init = function() {
             "viewport_width": viewportWidth
         };
 
+        /**
+         * Fish way: one way
+         *
+         * @function fishWayOneWay
+         * @return {Number} Sum of border offset left and border width
+         *
+         */
         function fishWayOneWay() {
             _this.fish_way_one_way = _this.border_offset_left + _this.$border_outerWidth;
             return _this.border_offset_left + _this.$border_outerWidth;
         }
 
+        /**
+         * Fish way: left and right ways (both)
+         *
+         * @function fishWayBothWay
+         * @return {Number} In this case one_way and both_way are equals
+         *
+         */
         function fishWayBothWay() {
             _this.fish_way_both_way = _this.fish_way_one_way;
             return _this.fish_way_one_way;
         }
 
+        /**
+         * Calculation view port css width
+         *
+         * @function viewportWidth
+         * @return {String} Multiple both ways on two sides and add padding. Concat calculated value with string
+         *
+         */
         function viewportWidth() {
             return (_this.fish_way_both_way * _this.count_of_left_right_sides) + _this.padding + 'px';
         }
     }
-    FISHBEHAVIOUR.SideCalculation.prototype.right = function() {
+    FISHBEHAVIOUR_.SideCalculation.prototype.right = function() {
         let _this = this;
 
         return {
@@ -111,16 +173,37 @@ PENCILBOOM.Fish.prototype.init = function() {
             "viewport_width": viewportWidth
         };
 
+        /**
+         * Fish way: left and right ways (both)
+         *
+         * @function fishWayBothWay
+         * @return {Number} Diff btw window width and border offset left
+         *
+         */
         function fishWayOneWay() {
             _this.fish_way_one_way = _this.$window_outer_width - _this.border_offset_left;
             return _this.$window_outer_width - _this.border_offset_left;
         }
 
+        /**
+         * Fish way: left and right ways (both)
+         *
+         * @function fishWayBothWay
+         * @return {Number} In this case one_way and both_way are equals
+         *
+         */
         function fishWayBothWay() {
             _this.fish_way_both_way = _this.fish_way_one_way * _this.count_of_left_right_sides;
             return _this.fish_way_one_way * _this.count_of_left_right_sides;
         }
 
+        /**
+         * Calculation view port css width
+         *
+         * @function viewportWidth
+         * @return {String} Diff btw window width and border offset left, add padding and add two border sides(left and right).
+         *
+         */
         function viewportWidth() {
             return _this.$window_outer_width - _this.border_offset_left + _this.padding + _this.out_width + 'px';
         }
@@ -144,7 +227,7 @@ PENCILBOOM.Fish.prototype.init = function() {
         "out_width": this.out_width,
         "$border_outerWidth": this.$border.outerWidth()
     };
-    side = new FISHBEHAVIOUR.SideCalculation(side_config);
+    side = new FISHBEHAVIOUR_.SideCalculation(side_config);
     
     if(this.isLeftDirection) {
         side_calculation = side.left();
@@ -202,6 +285,7 @@ PENCILBOOM.Fish.prototype.runAnimate = function() {
 
 PENCILBOOM.Fish.prototype.watch = function() {
     /**
+     * AT THIS moment DIDN'T use.
      * Fishes float separately.
      * This method apply to setTimeout clear event
      *
@@ -254,7 +338,6 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
 (() => {
     "use strict";
     $(document).ready(() => {
-        /* define */
         var $a_color_box = $('a.colorbox')
         , $exhibitions = $('.exhibitions')
         , $fixed_items = $('.fixed-items')
@@ -321,6 +404,14 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
             "direction": 'right',
             "out_width": 0
         }
+        , block_3_fish_2_Config = {
+            "$border": $('#block_3_border_2'),
+            "$fish": $('#fish_block_3_2'),
+            "$fish_wrapper": $('#fish_block_3_2_wrapper'),
+            "$viewport": $('#fish_block_3_2-viewport'),
+            "direction": 'left',
+            "out_width": 0
+        }
         , block_3_fish_3_Config = {
             "$border": $('#block_3_border_3'),
             "$fish": $('#fish_block_3_3'),
@@ -335,6 +426,14 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
             "$fish_wrapper": $('#fish_block_4_1_wrapper'),
             "$viewport": $('#fish_block_4_1-viewport'),
             "direction": 'right',
+            "out_width": 0
+        }
+        , block_4_fish_2_Config = {
+            "$border": $('#block_4_border_2'),
+            "$fish": $('#fish_block_4_2'),
+            "$fish_wrapper": $('#fish_block_4_2_wrapper'),
+            "$viewport": $('#fish_block_4_2-viewport'),
+            "direction": 'left',
             "out_width": 0
         }
         , choosen_config = {
@@ -395,6 +494,10 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
         fish_block_3_fish_1.init();
         fish_block_3_fish_1.runAnimate();
 
+        let fish_block_3_fish_2 = new PENCILBOOM.Fish(block_3_fish_2_Config);
+        fish_block_3_fish_2.init();
+        fish_block_3_fish_2.runAnimate();
+
         let fish_block_3_fish_3 = new PENCILBOOM.Fish(block_3_fish_3_Config);
         fish_block_3_fish_3.init();
         fish_block_3_fish_3.runAnimate();
@@ -402,6 +505,10 @@ PENCILBOOM.menu.prototype.isScrollBelowTitle = function() {
         let fish_block_4_fish_1 = new PENCILBOOM.Fish(block_4_fish_1_Config);
         fish_block_4_fish_1.init();
         fish_block_4_fish_1.runAnimate();
+
+        let fish_block_4_fish_2 = new PENCILBOOM.Fish(block_4_fish_2_Config);
+        fish_block_4_fish_2.init();
+        fish_block_4_fish_2.runAnimate();
 
         let menu = new PENCILBOOM.menu();
 
